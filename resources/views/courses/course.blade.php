@@ -175,7 +175,7 @@
         </div>
 
         <!-- Sticky Sidebar -->
-        <div class="col-md-4 sticky-sidebar">
+        <div class="col-md-3 sticky-sidebar">
             <div class="card shadow-sm border-0 mb-4">
                 <div class="card-body text-center">
                     <h3 class="fw-bold">$9.99</h3>
