@@ -59,45 +59,44 @@
                         'Web Design' => ['description' => 'Create stunning websites and launch your design career', 'cta' => 'Start Designing']
                     ];
                 @endphp
-                @foreach ($categories as $category => $details)
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link text-success border-0 {{ $loop->first ? 'active' : '' }}" id="{{ Str::slug($category) }}-tab"
-                            data-bs-toggle="tab" data-bs-target="#{{ Str::slug($category) }}" type="button"
-                            role="tab" aria-controls="{{ Str::slug($category) }}" aria-selected="{{ $loop->first ? 'true' : 'false' }}">
-                            {{ $category }}
-                        </button>
-                    </li>
-                @endforeach
+                  @if ($courses->isEmpty())
+                    <p>No course available</p>
+                    @else
+                    <ul>
+                        @foreach ($courses as $course)
+                            <li >
+                                <a class="btn " href="{{ route('course', ['id' => $course->id]) }}">
+                                    {{ $course->name }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                  @endif
             </ul>
 
             <div class="tab-content p-3" id="courseTabContent">
-                @foreach ($categories as $category => $details)
+                @foreach ($courses as $category => $details)
+                {{-- @dd($details) --}}
                     <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="{{ Str::slug($category) }}" role="tabpanel" aria-labelledby="{{ Str::slug($category) }}-tab">
                         <div class="row">
                             <div class="course-content col-12 mb-4">
                                 <h3 class="fs-2 mb-3">{{ $details['description'] }}</h3>
-                                <p class="text-secondary w-75">Our {{ $category }} courses are designed to take you from beginner to expert. Whether you're looking to start a new career or enhance your current skills, we have the perfect course for you.</p>
-                                <a href="#" class="btn btn-outline-success rounded-medium border-1">{{ $details['cta'] }}</a>
+                                <p class="text-secondary w-75">Our {{ $details['name'] }} {{ $details['description'] }}.</p>
+                                <a href="{{route('course', ['id' => $course->id])}}" class="btn btn-outline-success rounded-medium border-1">explore {{ $details['name'] }}</a>
                             </div>
-                            @for ($i = 1; $i <= 6; $i++)
-                                @php
-                                    $imageIndex = ($loop->index * 6) + $i;
-                                    $imageName = $imageIndex . '.jpg';
-                                @endphp
                                 <div class="col-md-4 col-lg-2 mb-4 shadow-sm course-card">
                                     <div class="card h-100 border-0">
-                                        <a href="{{ url('course') }}"><img src="{{ asset('assets/images/' . $imageName) }}" class="card-img-top" alt="{{ $category }} course {{ $i }}"></a>
+                                        <a href="{{route('course', ['id' => $course->id])}}"><img src="{{ asset('assets/images/' . $details['thumbnail']) }}" class="card-img-top" alt="{{ $category }} course {{ $details['name']  }}"></a>
                                         <div class="card-body d-flex flex-column">
-                                            <span class="card-title fs-6 fw-bold">{{ $category }} Masterclass {{ $i }}</span>
-                                            <p class="card-text text-muted">Dr. Expert {{ $i }}</p>
+                                            <span class="card-title fs-6 fw-bold"> Masterclass {{ $details['name']  }}</span>
+                                            <p class="card-text text-muted">Dr. Expert {{ $details['instructor']  }}</p>
                                             <div class="mt-auto d-flex justify-content-between align-items-center">
-                                                <span class="fw-bold">TZS {{ number_format(rand(40000, 60000), 0) }}/-</span>
+                                                <span class="fw-bold">TZS {{ $details['price']  }}/-</span>
                                                 <a href="{{ url('course') }}" class="btn btn-sm rounded-0 "><i class="fa text-success fa-cart-plus" aria-hidden="true"></i></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endfor
                         </div>
                     </div>
                 @endforeach
