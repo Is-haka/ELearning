@@ -8,7 +8,7 @@
 /* Sticky Sidebar */
 .sticky-sidebar {
     position: sticky;
-    top: 0;
+    top: 10%;
     align-self: start;
 }
 
@@ -107,16 +107,6 @@
             </div>
 
             <!-- Top Companies Section -->
-            <div class="top-companies mb-5 text-center">
-                <h5 class="fw-bold">Trusted by companies like</h5>
-                <div class="d-flex justify-content-center align-items-center flex-wrap mt-3">
-                    <img src="{{ asset('assets/images/nasdaq-logo.png') }}" alt="Nasdaq" class="mx-3" width="100">
-                    <img src="{{ asset('assets/images/volkswagen-logo.png') }}" alt="Volkswagen" class="mx-3" width="100">
-                    <img src="{{ asset('assets/images/box-logo.png') }}" alt="Box" class="mx-3" width="100">
-                    <img src="{{ asset('assets/images/netapp-logo.png') }}" alt="NetApp" class="mx-3" width="100">
-                    <img src="{{ asset('assets/images/eventbrite-logo.png') }}" alt="Eventbrite" class="mx-3" width="100">
-                </div>
-            </div>
 
             <!-- Coding Exercises Section -->
             <div class="coding-exercises mb-5">
@@ -197,14 +187,6 @@
                         <li class="mb-2"><i class="fas fa-tv me-2"></i> Access on mobile and TV</li>
                         <li class="mb-2"><i class="fas fa-certificate me-2"></i> Certificate of completion</li>
                     </ul>
-                </div>
-            </div>
-
-            <div class="card shadow-sm border-0 mb-4">
-                <div class="card-body">
-                    <h5 class="fw-bold">Training 5 or more people?</h5>
-                    <p class="text-muted">Get your team access to 22,000+ top Udemy courses anytime, anywhere.</p>
-                    <button class="btn btn-outline-primary btn-lg w-100">Try Udemy Business</button>
                 </div>
             </div>
         </div>

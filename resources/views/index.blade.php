@@ -81,7 +81,7 @@
                         <div class="row">
                             <div class="course-content col-12 mb-4">
                                 <h3 class="fs-2 mb-3">{{ $details['description'] }}</h3>
-                                <p class="text-secondary w-75">Our {{ $details['name'] }} {{ $details['description'] }}.</p>
+                                <p class="text-secondary w-75">Our {{ $details['created_at'] }} {{ $details['description'] }}.</p>
                                 <a href="{{route('course', ['id' => $course->id])}}" class="btn btn-outline-success rounded-medium border-1">explore {{ $details['name'] }}</a>
                             </div>
                                 <div class="col-md-4 col-lg-2 mb-4 shadow-sm course-card">

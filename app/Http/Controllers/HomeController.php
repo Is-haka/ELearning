@@ -1,21 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Models\Course;
 use App\Models\Courses;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        // $this->middleware('auth');
-    }
-
     /**
      * Show the application dashboard.
      *
@@ -23,9 +15,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $courses = Courses::all();
+        $courses = Courses::with('categories', 'instructor')->get();
 
         // Pass the data to the view
         return view('index', compact('courses'));
     }
 }
+

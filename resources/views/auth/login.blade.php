@@ -42,7 +42,7 @@
                 <!-- Password Reset Link -->
                 <div class="text-center mb-3">
                     @if (Route::has('password.request'))
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                        <a class="text-success`" href="{{ route('password.request') }}">
                             Forgot Your Password?
                         </a>
                     @endif
@@ -50,8 +50,8 @@
 
                 <!-- Registration and Organization Login Links -->
                 <div class="text-center">
-                    <p>Don't have an account? <a href="{{ route('register') }}" class="text-primary">Sign up</a></p>
-                    <p><a href="#" class="text-primary">Log in with your organization</a></p>
+                    <p>Don't have an account? <a href="{{ route('register') }}" class="text-success">Sign up</a></p>
+                    {{-- <p><a href="#" class="text-primary">Log in with your organization</a></p> --}}
                 </div>
             </form>
         </div>

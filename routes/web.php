@@ -26,4 +26,4 @@ Auth::routes();
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('categories/ict', [IctController::class, 'ict'])->name('categories.ict');
 Route::get('course/{id}', [CourseController::class, 'course'])->name('course');
-Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+Route::get('/cart', [CartController::class, 'index'])->name('cart');

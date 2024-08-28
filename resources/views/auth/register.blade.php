@@ -54,8 +54,8 @@
 
                 <!-- Already Have an Account -->
                 <div class="text-center">
-                    <p>Already have an account? <a href="{{ route('login') }}" class="text-primary">Log in</a></p>
-                    <p><a href="#" class="text-primary">Sign up with your organization</a></p>
+                    <p>Already have an account? <a href="{{ route('login') }}" class="text-success">Log in</a></p>
+                    {{-- <p><a href="#" class="text-primary">Sign up with your organization</a></p> --}}
                 </div>
             </form>
         </div>
