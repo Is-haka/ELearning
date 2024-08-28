@@ -89,7 +89,7 @@
                                         <a href="{{route('course', ['id' => $course->id])}}"><img src="{{ asset('assets/images/' . $details['thumbnail']) }}" class="card-img-top" alt="{{ $category }} course {{ $details['name']  }}"></a>
                                         <div class="card-body d-flex flex-column">
                                             <span class="card-title fs-6 fw-bold"> Masterclass {{ $details['name']  }}</span>
-                                            <p class="card-text text-muted">Dr. Expert {{ $details['instructor']  }}</p>
+                                            <p class="card-text text-muted">Dr. Expert {{ $details['name']  }}</p>
                                             <div class="mt-auto d-flex justify-content-between align-items-center">
                                                 <span class="fw-bold">TZS {{ $details['price']  }}/-</span>
                                                 <a href="{{ url('course') }}" class="btn btn-sm rounded-0 "><i class="fa text-success fa-cart-plus" aria-hidden="true"></i></a>
