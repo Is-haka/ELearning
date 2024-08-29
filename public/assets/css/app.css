@@ -13,9 +13,14 @@
         padding: 5px;
     }
 }
+
+.course-card {
+    text-decoration: none;
+}
+
 .course-card:hover {
     box-shadow: 0px 2px 2px #d9d9d9d9 !important;
-    transform: scale(1.09);
+    transform: scale(1.009);
     transition: all 0.2s ease-in-out;
 }
 .link:hover {
@@ -25,17 +30,20 @@
 .dropdown-menu {
     display: none;
     position: absolute;
-    margin-top: 25% !important;
+    top: 100%; /* Position it right below the parent */
+    left: 0;
+    margin-top: 0.5rem !important; /* Small gap between navbar and dropdown */
     background-color: #fff;
-    min-width: 200px;
+    min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 1000; /* Ensure it's above other content */
     border: none !important;
+    padding: 0.5rem 0;
 }
 
 .dropdown-menu .dropdown-item {
     color: black;
-    /* padding: 12px 16px; */
+    padding: 0.5rem 1rem;
     text-decoration: none;
     display: block;
 }
@@ -47,4 +55,34 @@
 
 .dropdown:hover .dropdown-menu {
     display: block;
+}
+
+/* Add a small delay before hiding the dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropdown:hover {
+    cursor: pointer;
+}
+
+.dropdown::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+}
+
+/* Ensure the dropdown stays visible when hovering over the gap */
+.dropdown:hover .dropdown-menu,
+.dropdown-menu:hover {
+    display: block;
+}
+
+/* For right-aligned dropdowns (like user menu) */
+.dropdown-menu-end {
+    right: 0;
+    left: auto;
 }
