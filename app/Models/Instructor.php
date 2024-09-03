@@ -14,4 +14,8 @@ class Instructor extends Model
     {
         return $this->hasMany(Courses::class);
     }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id'); // Assuming 'user_id' is the foreign key in 'instructor' table
+    }
 }

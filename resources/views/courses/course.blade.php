@@ -31,21 +31,15 @@
     font-size: 1.25rem;
     margin-bottom: 20px;
 }
-
-.hero-section .btn-success {
-    padding: 10px 20px;
-    font-size: 1.25rem;
-    border-radius: 5px;
-}
 </style>
 
-<div class="container-fluid mt-5">
+<div class="container-fluid">
     <!-- Hero Section -->
-    <div class="row align-items-center bg-dark text-white hero-section">
+    <div class="row align-items-center justify-content-center bg-dark text-white hero-section">
         <div class="col-md-8">
             <h1 class="display-4 fw-bold">The Complete Python Bootcamp From Zero to Hero in Python</h1>
             <p class="lead">Learn Python like a Professional. Start from the basics and go all the way to creating your own applications and games.</p>
-            <a href="#" class="btn btn-success btn-lg">Get Started</a>
+            <a href="#" class="btn btn-success">Get Started</a>
         </div>
     </div>
 
@@ -165,13 +159,13 @@
         </div>
 
         <!-- Sticky Sidebar -->
-        <div class="col-md-3 sticky-sidebar">
+        <div class="col-md-3 col-lg-3 sticky-sidebar">
             <div class="card shadow-sm border-0 mb-4">
                 <div class="card-body text-center">
                     <h3 class="fw-bold">$9.99</h3>
                     <p class="text-muted"><s>$99.99</s> 90% off</p>
-                    <button class="btn btn-success btn-lg w-100 mb-3">Add to Cart</button>
-                    <button class="btn btn-outline-secondary btn-lg w-100">Buy Now</button>
+                    <button class="btn btn-success btn-sm w-100 mb-3">Add to Cart</button>
+                    <button class="btn btn-outline-secondary btn-sm w-100">Buy Now</button>
                     <p class="text-muted mt-2">30-Day Money-Back Guarantee</p>
                 </div>
             </div>
