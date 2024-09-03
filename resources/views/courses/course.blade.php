@@ -31,12 +31,6 @@
     font-size: 1.25rem;
     margin-bottom: 20px;
 }
-
-.hero-section .btn-success {
-    padding: 10px 20px;
-    font-size: 1.25rem;
-    border-radius: 5px;
-}
 </style>
 
 <div class="container-fluid">
@@ -45,7 +39,7 @@
         <div class="col-md-8">
             <h1 class="display-4 fw-bold">The Complete Python Bootcamp From Zero to Hero in Python</h1>
             <p class="lead">Learn Python like a Professional. Start from the basics and go all the way to creating your own applications and games.</p>
-            <a href="#" class="btn btn-sm btn-success">Get Started</a>
+            <a href="#" class="btn btn-success">Get Started</a>
         </div>
     </div>
 
