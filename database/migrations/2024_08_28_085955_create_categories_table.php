@@ -8,7 +8,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->id(); // Auto-incrementing primary key
+            $table->bigIncrements('id'); // Auto-incrementing primary key
             $table->string('name'); // Name of the category
             $table->text('description')->nullable(); // Description of the category, nullable
             $table->timestamps(); // Created at and Updated at timestamps
