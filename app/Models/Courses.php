@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Courses extends Model
 {
@@ -22,5 +23,20 @@ class Courses extends Model
         return $this->belongsToMany(User::class, 'enrollments')
                     ->withPivot('status')
                     ->withTimestamps();
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Carts::class, 'course_id');
+    }
+
+    public function isInCart()
+    {
+        if (Auth::check()) {
+            return Carts::where('course_id', $this->id)
+                ->where('user_id', Auth::id())
+                ->exists();
+        }
+        return false;
     }
 }

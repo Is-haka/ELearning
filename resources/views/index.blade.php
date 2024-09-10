@@ -24,12 +24,12 @@
                     <div class="carousel-item {{ $index == 0 ? 'active' : '' }}" data-bs-interval="{{ 10000 - ($index * 4000) }}">
                         <div class="carousel-img-container d-flex justify-content-around align-items-center">
                             <div class="carousel-image-wrapper col-md-6">
-                                <img class="carousel-img img-fluid" src="{{ asset('assets/images/' . $item['image']) }}" alt="Slide {{ $index + 1 }}">
+                                <img class="carousel-img img-fluid" src="{{ asset('uploads/files/' . $item['image']) }}" alt="Slide {{ $index + 1 }}">
                             </div>
                             <div class="carousel-text-wrapper col-md-5 d-md-block d-none">
                                 <h2 class="fw-bold mb-3">{{ $item['title'] }}</h2>
                                 <p class="fs-5 w-75">{{ $item['description'] }}</p>
-                                <a href="#" class="btn btn-success rounded-medium mt-3">Explore Courses</a>
+                                {{-- <a href="#" class="btn btn-success rounded-medium mt-3">Explore Courses</a> --}}
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                     <div class="col-md-4 col-lg-2 mb-4 shadow-sm course-card">
                         <div class="card h-100 border-0">
                             <a href="{{ route('course', ['id' => $course->id]) }}">
-                                <img src="{{ asset('assets/uploads/' . $course->thumbnail) }}" class="card-img-top" alt="{{ $course->name }} course">
+                                <img src="{{ asset('uploads/' . $course->thumbnail) }}" class="card-img-top" alt="{{ $course->name }} course">
                             </a>
                             <div class="card-body d-flex flex-column">
                                 <span class="card-title fs-6 fw-bold">Masterclass {{ $course->name }}</span>

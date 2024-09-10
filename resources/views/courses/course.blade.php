@@ -8,7 +8,6 @@
         <div class="col-md-8">
             <h1 class="display-4 fw-bold">{{ $courses->title }}</h1>
             <p class="lead">{{ $courses->description }}</p>
-            <a href="#" class="btn btn-success">Get Started</a>
         </div>
     </div>
 
@@ -86,7 +85,7 @@
                                 <ul>
                                     <p class="p-2 alert alert-secondary text-success">{{ $firstLesson->duration }} minutes - {{ $firstLesson->description }}</p>
                                     @foreach($firstLesson->lessonTypes as $type)
-                                        <li>Type: Reading - <a href="{{ asset('uploads/' . $type->reading) }}" target="_blank"> {{ $firstLesson->title }} </a></li>
+                                        <li>Type: Reading - <a href="{{ asset('uploads/' . $type->reading) }}" target="_blank">{{ $firstLesson->title }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -97,25 +96,44 @@
                     <!-- Remaining Lessons -->
                     @foreach ($remainingLessons as $index => $lesson)
                     <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo-{{ $index }}" aria-expanded="false" aria-controls="collapseTwo">
+                        <h2 class="accordion-header" id="headingTwo-{{ $index }}">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo-{{ $index }}" aria-expanded="false" aria-controls="collapseTwo-{{ $index }}">
                                 {{ $lesson->title }}
+                                <!-- Show "Locked" badge if not enrolled -->
+                                @if(!$enrolled || $enrolled->status !== 'enrolled')
+                                    <span class="ms-2 badge bg-secondary"><i class="fas fa-lock fa-sm fa-fw"></i></span>
+                                @endif
                             </button>
                         </h2>
-                        <div id="collapseTwo-{{ $index }}" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#courseContentAccordion">
+                        <div id="collapseTwo-{{ $index }}" class="accordion-collapse collapse" aria-labelledby="headingTwo-{{ $index }}" data-bs-parent="#courseContentAccordion">
                             <div class="accordion-body">
+                                <p class="alert alert-secondary text-success p-2">{{ $lesson->duration }} minutes - {{ $lesson->description }}</p>
                                 <ul>
-                                    <p class="alert alert-secondary text-success p-2">{{ $lesson->duration }} minutes - {{ $lesson->description }}</p>
                                     @foreach($lesson->lessonTypes as $type)
-                                        <li class="p-2">Type: Reading - <a href="{{ asset('uploads/'. $type->reading) }}" target="_blank">{{ $lesson->title }}</a></li>
+                                        <li class="p-2">
+                                            <!-- Check if $enrolled is not null and status is 'enrolled' -->
+                                            @if($enrolled && $enrolled->status === 'enrolled')
+                                                <!-- Links are clickable if the user is enrolled -->
+                                                Type: Reading - <a href="{{ asset('uploads/'. $type->reading) }}" target="_blank">{{ $lesson->title }}</a>
+                                            @else
+                                                <!-- Links are disabled if the user is not enrolled -->
+                                                <span class="text-primary" style="text-decoration: underline; cursor: not-allowed;">{{ $lesson->title }}</span>
+                                            @endif
+                                        </li>
                                     @endforeach
                                 </ul>
+                                <!-- Display warning if not enrolled -->
+                                @if(!$enrolled || $enrolled->status !== 'enrolled')
+                                    <p class="alert alert-warning mt-2">This lesson content is locked. Please enroll in the course to access it.</p>
+                                @endif
                             </div>
                         </div>
                     </div>
                     @endforeach
                 </div>
             </div>
+
+
 
         </div>
 
@@ -125,10 +143,48 @@
                 <div class="card-body text-center">
                     <h3 class="fw-bold">TZS {{ $courses->price }}/- </h3>
                     <p class="text-muted"><s>TZS {{ number_format(rand(40000, 60000), 0) }}/-</s> 90% off</p>
-                    <button class="btn btn-success btn-sm w-100 mb-3">Add to Cart</button>
-                    <button class="btn btn-outline-secondary btn-sm w-100">Buy Now</button>
+
+                    @auth
+                        @php
+                            $userId = Auth::id();
+                            $enrolled = \App\Models\Enrollments::where('user_id', $userId)
+                                ->where('course_id', $courses->id)
+                                ->exists();
+
+                            // Check if the course is already in the cart (using session or Cart model)
+                            $inCart = \App\Models\Carts::where('user_id', $userId)
+                                ->where('course_id', $courses->id)
+                                ->exists(); // Or use session-based check
+                        @endphp
+
+                        @if (!$enrolled)
+                            <!-- If course is not enrolled -->
+                            @if ($inCart)
+                                <!-- If the course is already in the cart, show 'Go to Cart' button -->
+                                <a href="{{ route('cart') }}" class="btn btn-secondary btn-sm w-100 mb-3"> <i class="fas fa-cart-arrow-down fa-sm fa-fw"></i> Go to Cart</a>
+                            @else
+                                <!-- If the course is not in the cart, show 'Add to Cart' button -->
+                                <a href="{{ route('cart.add', ['course_id' => $courses->id]) }}" class="btn btn-success btn-sm w-100 mb-3"> <i class="fas fa-cart-plus fa-sm fa-fw"></i> Add to Cart</a>
+                            @endif
+
+                            <!-- Enroll Now Form -->
+                            <form action="{{ route('course.enroll', ['course_id' => $courses->id]) }}" method="POST">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-secondary btn-sm w-100">Enroll Now</button>
+                            </form>
+                        @else
+                            <!-- If already enrolled -->
+                            <button class="btn btn-outline-secondary btn-sm w-100" disabled>Enrolled</button>
+                        @endif
+                    @else
+                        <!-- For guest users, show only the Add to Cart button and Enroll Now form -->
+                        <a href="{{ route('cart.add', ['course_id' => $courses->id]) }}" class="btn btn-success btn-sm w-100 mb-3">Add to Cart</a>
+                        <a href="{{ route('login') }}" class="btn btn-outline-secondary btn-sm w-100">Enroll Now</a>
+                    @endauth
+
                     <p class="text-muted mt-2">30-Day Money-Back Guarantee</p>
                 </div>
+
             </div>
 
             <div class="card shadow-sm border-0 mb-4">

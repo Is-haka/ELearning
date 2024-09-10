@@ -32,6 +32,7 @@ class LessonsController extends AdminController
             return Courses::find($courseId)->name;
         });
         $grid->column('title', __('Title'));
+        $grid->column('description', __('Description'));
         $grid->column('duration', __('Duration'));
         $grid->column('created_at', __('Created at'));
         $grid->column('updated_at', __('Updated at'));
@@ -54,6 +55,7 @@ class LessonsController extends AdminController
             return Courses::find($courseId)->name;
         });
         $show->field('title', __('Title'));
+        $show->field('description', __('Description'));
         $show->field('duration', __('Duration'));
         $show->field('created_at', __('Created at'));
         $show->field('updated_at', __('Updated at'));
@@ -74,6 +76,7 @@ class LessonsController extends AdminController
             ->options(Courses::all()->pluck('name', 'id')) // Modify this condition based on your needs
             ->required();
         $form->text('title', __('Title'));
+        $form->textarea('description', __('Description'));
         $form->number('duration', __('Duration'));
 
         return $form;
