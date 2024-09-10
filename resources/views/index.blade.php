@@ -84,7 +84,7 @@
                     <div class="col-md-4 col-lg-2 mb-4 shadow-sm course-card">
                         <div class="card h-100 border-0">
                             <a href="{{ route('course', ['id' => $course->id]) }}">
-                                <img src="{{ asset('assets/images/' . $course->thumbnail) }}" class="card-img-top" alt="{{ $course->name }} course">
+                                <img src="{{ asset('assets/uploads/' . $course->thumbnail) }}" class="card-img-top" alt="{{ $course->name }} course">
                             </a>
                             <div class="card-body d-flex flex-column">
                                 <span class="card-title fs-6 fw-bold">Masterclass {{ $course->name }}</span>

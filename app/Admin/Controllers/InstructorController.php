@@ -30,6 +30,7 @@ class InstructorController extends AdminController
         $grid = new Grid(new Instructor());
 
         $grid->column('id', __('Id'));
+        $grid->column('instructor_description', __('Instructor_Description'));
         $grid->column('user_id', __('Instructor'))->display(function ($userId) {
             return User::find($userId)->name; // Display user name instead of ID
         });
@@ -53,6 +54,7 @@ class InstructorController extends AdminController
         $show = new Show(Instructor::findOrFail($id));
 
         $show->field('id', __('Id'));
+        $show->field('instructor_description', __('Instructor_Description'));
         $show->field('user_id', __('Instructor'))->as(function ($userId) {
             return User::find($userId)->name; // Display user name instead of ID
         });
@@ -78,7 +80,7 @@ class InstructorController extends AdminController
         $form->select('user_id', __('Instructor'))
              ->options(User::where('role_id', 2)->pluck('name', 'id')) // Fetch users with role_id 2
              ->required();
-
+        $form->text('instructor_description', __('Instructor_Description'))->required();
         // Dropdown for selecting specific categories (modify the condition as needed)
         $form->select('categories_id', __('Category'))
              ->options(Categories::all()->pluck('name', 'id')) // Modify this condition based on your needs

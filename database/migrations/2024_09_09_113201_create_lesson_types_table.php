@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('lesson_types', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('reading');
-            $table->string('video');
+            $table->string('reading')->nullable();
+            $table->string('video')->nullable();
             $table->foreignId('lesson_id')->constrained('lessons')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

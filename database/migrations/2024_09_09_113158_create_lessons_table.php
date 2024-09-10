@@ -16,6 +16,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('course_id'); // Foreign key for the course
             $table->string('title'); // Title of the lesson
+            $table->string('description');
             $table->integer('duration'); // Duration of the lesson in minutes or seconds
             $table->timestamps(); // Created at and updated at timestamps
 

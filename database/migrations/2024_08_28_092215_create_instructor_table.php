@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('instructor', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('instructor_description');
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('categories_id')->constrained('categories')->onDelete('cascade');
             $table->timestamps();

@@ -32,7 +32,7 @@ class CoursesController extends AdminController
         $grid->column('name', __('Name'));
 
         // Display user name or return 'Unknown' if null
-        $grid->column('user_id', __('Instructor'))->display(function ($userId) {
+        $grid->column('instructor_id', __('Instructor'))->display(function ($userId) {
             $user = User::find($userId);
             return $user ? $user->name : 'Unknown'; // Check if user exists
         });
@@ -69,7 +69,7 @@ class CoursesController extends AdminController
         $show->field('name', __('Name'));
 
         // Display user name or return 'Unknown' if null
-        $show->field('user_id', __('Instructor'))->as(function ($userId) {
+        $show->field('instructor_id', __('Instructor'))->as(function ($userId) {
             $user = User::find($userId);
             return $user ? $user->name : 'Unknown'; // Check if user exists
         });
@@ -103,7 +103,7 @@ class CoursesController extends AdminController
 
         // Select field for the instructor, showing the name but storing the id
         $form->text('name', __('Name'));
-        $form->select('user_id', __('Instructor'))
+        $form->select('instructor_id', __('Instructor'))
              ->options(User::where('role_id', 2)->pluck('name', 'id')) // Fetch users with role_id 2
              ->required();
 
