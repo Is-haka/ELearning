@@ -32,7 +32,7 @@ return [
 
         'admin'=>[
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => public_path('uploads'),
             'visibility' => 'public',
             'url' =>env('APP_URL').'/uploads',
             // 'throw' => false,

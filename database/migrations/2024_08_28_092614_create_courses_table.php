@@ -17,7 +17,7 @@ return new class extends Migration
             // Foreign key to instructors table
             $table->foreignId('instructor_id')
                   ->constrained('instructor')
-                  ->onDelete('cascade');  // Automatically delete course if instructor is deleted
+                  ->onDelete('cascade')->onUpdate('cascade');  // Automatically delete course if instructor is deleted
 
             $table->string('title');
             $table->text('description');
@@ -26,7 +26,7 @@ return new class extends Migration
             // Foreign key to categories table
             $table->foreignId('categories_id')
                   ->constrained('categories')
-                  ->onDelete('cascade');  // Automatically delete course if category is deleted
+                  ->onDelete('cascade')->onUpdate('cascade');  // Automatically delete course if category is deleted
 
             $table->string('language');
             $table->string('thumbnail')->nullable();

@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('username');
             $table->string('email')->unique();
             $table->string('profile')->nullable();
-            $table->foreignId('role_id')->nullable()->default(2)->constrained()->onDelete('cascade');
+            $table->foreignId('role_id')->nullable()->default(3)->constrained('admin_roles')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
