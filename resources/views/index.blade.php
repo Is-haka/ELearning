@@ -64,33 +64,47 @@
                 @endif
             </ul>
 
-            <div class="tab-content p-3" id="courseTabContent">
-                @foreach ($courses->groupBy(function($course) { return $course->categories->name; }) as $category => $coursesInCategory)
-                    <div class="tab-pane fade @if ($loop->first) show active @endif" id="{{ Str::slug($category) }}" role="tabpanel" aria-labelledby="{{ Str::slug($category) }}-tab">
-                        <div class="row">
-                            @foreach ($coursesInCategory as $course)
-                            <a class="nav-link text-success" href="{{ route('course', ['id' => $course->id]) }}">
-                                <div class="col-md-4 col-lg-2 mb-4 shadow-sm course-card">
-                                    <div class="card h-100 border-0">
-                                            <img src="{{ asset('assets/images/' . $course->thumbnail) }}" class="card-img-top" alt="{{ $course->name }} course">
-                                            <div class="card-body d-flex flex-column">
-                                                <span class="card-title fs-6 fw-bold">Masterclass {{ $course->name }}</span>
-                                                <p class="card-text text-muted">Expert {{ $course->instructor->user->name }}</p>
-                                                <div class="mt-auto d-flex justify-content-between align-items-center">
-                                                <span class="fw-bold">TZS {{ $course->price }}/-</span>
-                                                <a href="{{ route('course', ['id' => $course->id]) }}" class="btn btn-sm rounded-0">
-                                                    <i class="fa text-success fa-cart-plus" aria-hidden="true"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+            <!-- Loop through the courses by category -->
+<div class="tab-content p-3" id="courseTabContent">
+    @foreach ($courses->groupBy(function($course) { return $course->categories->name; }) as $category => $coursesInCategory)
+        <div class="tab-pane fade @if ($loop->first) show active @endif" id="{{ Str::slug($category) }}" role="tabpanel" aria-labelledby="{{ Str::slug($category) }}-tab">
+
+            <!-- Display the course content section for each category -->
+            @if ($coursesInCategory->isNotEmpty())
+                <div class="course-content col-12 mb-4">
+                    <h3 class="fs-2 mb-3">Course offered by {{ $coursesInCategory->first()->categories->name }} Department</h3>
+                    <p class="text-secondary w-75">Our {{ $coursesInCategory->first()->categories->description }} courses are designed to take you from beginner to expert. Whether you're looking to start a new career or enhance your current skills, we have the perfect course for you.</p>
+                    <a href="{{ route('categories.' . strtolower($coursesInCategory->first()->categories->name)) }}" class="btn btn-outline-success rounded-medium border-1">Explore {{ $coursesInCategory->first()->categories->name }} Courses</a>
+                </div>
+            @endif
+
+            <!-- Loop to display the course cards for each category -->
+            <div class="row d-flex">
+                @foreach ($coursesInCategory as $course)
+                    <div class="col-md-4 col-lg-2 mb-4 shadow-sm course-card">
+                        <div class="card h-100 border-0">
+                            <a href="{{ route('course', ['id' => $course->id]) }}">
+                                <img src="{{ asset('assets/images/' . $course->thumbnail) }}" class="card-img-top" alt="{{ $course->name }} course">
                             </a>
-                            @endforeach
+                            <div class="card-body d-flex flex-column">
+                                <span class="card-title fs-6 fw-bold">Masterclass {{ $course->name }}</span>
+                                <p class="card-text text-muted">Expert {{ $course->instructor->user->name }}</p>
+                                <div class="mt-auto d-flex justify-content-between align-items-center">
+                                    <span class="fw-bold">TZS {{ $course->price }}/-</span>
+                                    <a href="{{ route('course', ['id' => $course->id]) }}" class="btn btn-sm rounded-0">
+                                        <i class="fa text-success fa-cart-plus" aria-hidden="true"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 @endforeach
             </div>
+        </div>
+    @endforeach
+</div>
+
+
         </div>
     </section>
 </div>

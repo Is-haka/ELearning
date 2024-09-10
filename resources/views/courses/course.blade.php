@@ -2,43 +2,13 @@
 
 @section('app.name', 'courses')
 @section('content')
-<style>
-/* Your existing CSS */
-
-/* Sticky Sidebar */
-.sticky-sidebar {
-    position: sticky;
-    top: 10%;
-    align-self: start;
-}
-
-/* Hero Section */
-.hero-section {
-    background-image: url('{{ asset('assets/images/hero-bg.jpg') }}');
-    background-size: cover;
-    background-position: center;
-    padding: 100px;
-    color: #fff;
-    text-align: center;
-}
-
-.hero-section h1 {
-    font-size: 3rem;
-    font-weight: 700;
-}
-
-.hero-section p.lead {
-    font-size: 1.25rem;
-    margin-bottom: 20px;
-}
-</style>
-
 <div class="container-fluid">
     <!-- Hero Section -->
     <div class="row align-items-center justify-content-center bg-dark text-white hero-section">
         <div class="col-md-8">
-            <h1 class="display-4 fw-bold">The Complete Python Bootcamp From Zero to Hero in Python</h1>
-            <p class="lead">Learn Python like a Professional. Start from the basics and go all the way to creating your own applications and games.</p>
+            {{-- @dd($courses) --}}
+            <h1 class="display-4 fw-bold">{{ $courses->title }}</h1>
+            <p class="lead">{{ $courses->description }}</p>
             <a href="#" class="btn btn-success">Get Started</a>
         </div>
     </div>
@@ -49,12 +19,12 @@
         <div class="col-md-8">
             <!-- Course Header -->
             <div class="course-header">
-                <h1 class="fw-bold">The Complete Python Bootcamp From Zero to Hero in Python</h1>
-                <p class="lead text-muted">Learn Python like a Professional Start from the basics and go all the way to creating your own applications and games.</p>
-                <p class="mb-2">1,947,835 students</p>
-                <p class="mb-2">Created by <span class="fw-bold">Dr. John Doe</span></p>
-                <p class="text-muted">Last updated 7/2023</p>
-                <p>English <span class="text-muted">• English [Auto], Arabic [Auto]</span></p>
+                <h1 class="fw-bold">The Complete {{ $courses->title }}</h1>
+                <p class="lead text-muted">Learn {{ $courses->title }}</p>
+                <p class="mb-2">{{ 0 }} Students</p>
+                <p class="mb-2">Created by <span class="fw-bold">Dr. {{ $courses->instructor->user->name }}</span></p>
+                <p class="text-muted">Last updated {{ $courses->updated_at }}</p>
+                <p>English <span class="text-muted">•</span></p>
             </div>
 
             <!-- Course Meta Data -->
