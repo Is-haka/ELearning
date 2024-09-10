@@ -17,4 +17,10 @@ class Courses extends Model
     public function instructor() {
         return $this->belongsTo(Instructor::class, 'instructor_id'); // Adjust the foreign key as needed
     }
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'enrollments')
+                    ->withPivot('status')
+                    ->withTimestamps();
+    }
 }
