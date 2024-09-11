@@ -14,9 +14,8 @@ class Lessons extends Model
 
     // Fillable properties to allow mass assignment
     protected $fillable = [
-        'name',          // Name of the lesson
+        'title',          // Name of the lesson
         'description',   // Description of the lesson
-        'duration',      // Duration of the lesson (optional)
         'created_at',    // Timestamp of creation
         'updated_at'     // Timestamp of last update
     ];
