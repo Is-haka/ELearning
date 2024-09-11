@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Courses;
+use App\Models\Categories;
 use App\Models\Enrollments;
 use App\Models\Lessons;
 use App\Models\LessonType;
@@ -41,7 +42,7 @@ class CourseController extends Controller
         $userId = Auth::id();
         $enrolled = Enrollments::where('user_id', $userId)->where('course_id', $id)->first();
     }
-
+    $cat = Categories::all();
     // Pass data to the view, including enrollment status
     return view('Courses.course', compact(
         'courses',
@@ -51,7 +52,8 @@ class CourseController extends Controller
         'totalLessonTypes',
         'firstLesson',
         'remainingLessons',
-        'enrolled'
+        'enrolled',
+        'cat'
     ));
 }
 
@@ -87,8 +89,9 @@ class CourseController extends Controller
         $enrolled = Enrollments::where('user_id', $userId)
         ->where('course_id', $course_id)
         ->first();
+        $cat = Categories::all();
 
-        return redirect()->route('course.view', ['course_id' => $course_id])
+        return redirect()->route('course.view', ['course_id' => $course_id], compact('cat'))
                          ->with('success', 'You have been enrolled in the course.')
                          ->with('enrolled', $enrolled);
     }
@@ -103,9 +106,10 @@ class CourseController extends Controller
             return redirect()->route('cart')->with('error', 'Course not found.');
         }
 
+        $cat = Categories::all();
         // Return the view with course details
         return view('course.course', [
             'course' => $course
-        ]);
+        ], compact('cat'));
     }
 }

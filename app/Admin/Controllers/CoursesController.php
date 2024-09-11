@@ -8,6 +8,7 @@ use OpenAdmin\Admin\Form;
 use OpenAdmin\Admin\Grid;
 use OpenAdmin\Admin\Show;
 use \App\Models\Courses;
+use App\Models\Instructor;
 use App\Models\User;
 
 class CoursesController extends AdminController
@@ -33,8 +34,8 @@ class CoursesController extends AdminController
 
         // Display user name or return 'Unknown' if null
         $grid->column('instructor_id', __('Instructor'))->display(function ($userId) {
-            $user = User::find($userId);
-            return $user ? $user->name : 'Unknown'; // Check if user exists
+            $user = User::find($userId);  // Find the user (instructor) by ID
+            return $user ? $user->name : 'Unknown';  // Check if the user exists and return the name
         });
 
         $grid->column('title', __('Title'));
@@ -70,8 +71,8 @@ class CoursesController extends AdminController
 
         // Display user name or return 'Unknown' if null
         $show->field('instructor_id', __('Instructor'))->as(function ($userId) {
-            $user = User::find($userId);
-            return $user ? $user->name : 'Unknown'; // Check if user exists
+            $user = Instructor::find($userId);  // Fetch the instructor (user)
+            return $user ? $user->name : 'Unknown';  // Return the instructor's name or 'Unknown'
         });
 
         $show->field('title', __('Title'));
@@ -104,8 +105,8 @@ class CoursesController extends AdminController
         // Select field for the instructor, showing the name but storing the id
         $form->text('name', __('Name'));
         $form->select('instructor_id', __('Instructor'))
-             ->options(User::where('role_id', 2)->pluck('name', 'id')) // Fetch users with role_id 2
-             ->required();
+            ->options(Instructor::with('user')->get()->pluck('user.name', 'id')) // Fetch instructors, showing user names
+            ->required();
 
         $form->text('title', __('Title'));
         $form->textarea('description', __('Description'));

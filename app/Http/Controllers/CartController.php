@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Carts;
+use App\Models\Categories;
 use App\Models\Courses;
 use App\Models\Enrollments;
 use Illuminate\Support\Facades\Log;
@@ -30,10 +31,12 @@ class CartController extends Controller
             return $item->courses->price * $item->quantity;
         });
 
+        $cat = Categories::all();
+
         return view('cart', [
             'cartItems' => $cartItems,
             'totalPrice' => $totalPrice
-        ]);
+        ], compact('cat'));
     }
 
     /**
@@ -49,9 +52,10 @@ class CartController extends Controller
             session()->put('redirect_to', route('cart.add', [
                 'course_id' => $request->input('course_id')
             ]));
+            $cat = Categories::all();
 
             // Redirect to login page
-            return redirect()->route('login');
+            return redirect()->route('login', compact('cat'));
         }
 
         $userId = Auth::id();
@@ -73,7 +77,9 @@ class CartController extends Controller
 
         Log::info('Cart Item Created/Updated: ' . $cartItem);
 
-        return redirect()->route('cart')->with('success', 'Course added to cart.');
+        $cat = Categories::all();
+
+        return redirect()->route('cart', compact('cat'))->with('success', 'Course added to cart.');
     }
 
     /**
@@ -87,7 +93,9 @@ class CartController extends Controller
         $userId = Auth::id();
         Carts::where('id', $id)->where('user_id', $userId)->delete();
 
-        return redirect()->route('cart')->with('success', 'Item removed from cart.');
+        $cat = Categories::all();
+
+        return redirect()->route('cart', compact('cat'))->with('success', 'Item removed from cart.');
     }
 
     public function enroll(Request $request)
@@ -132,9 +140,11 @@ class CartController extends Controller
         // Remove items from cart
         Carts::where('user_id', $userId)->delete();
 
+        $cat = Categories::all();
+
         // Redirect to the course page (assuming you want to redirect to the first course)
         $firstCourseId = $cartItems->first()->course_id;
-        return redirect()->route('course.view', ['course_id' => $firstCourseId])
+        return redirect()->route('course.view', ['course_id' => $firstCourseId], compact('cat'))
                          ->with('success', 'You have been enrolled in the course.');
     }
 

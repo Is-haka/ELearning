@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IctController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\departments\DepartmentsController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +28,7 @@ Route::get('/', [HomeController::class, 'index']);
 
 //Course routes
 Route::prefix('courses')->group( function () {
-    Route::get('/categories/ict', [IctController::class, 'ict'])->name('categories.ict');
+    Route::get('/departments/{id}', [DepartmentsController::class, 'show'])->name('departments');
     Route::get('/course/{id}', [CourseController::class, 'course'])->name('course');
     Route::get('/course/{course_id}', [CourseController::class, 'view'])->name('course.view');
     Route::post('/course/enroll/{course_id}', [CourseController::class, 'enrollCourse'])->name('course.enroll');

@@ -38,7 +38,7 @@
                                 Categories
                             </a>
                             <div class="dropdown-menu" aria-labelledby="categoriesDropdown">
-                                <a class="dropdown-item" href="{{ route('categories.ict') }}"><span class="d-flex justify-content-between position-relative align-items-center">ICT <span class="ml-4"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></span></a>
+                                <a class="dropdown-item" href="#"><span class="d-flex justify-content-between position-relative align-items-center">ICT <span class="ml-4"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></span></a>
                                 <a class="dropdown-item" href="#"><span class="d-flex justify-content-between position-relative align-items-center">Mechanical <span class="ml-4"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></span></a>
                                 <a class="dropdown-item" href="#"><span class="d-flex justify-content-between position-relative align-items-center">Civil <span class="ml-4"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></span></a>
                                 <a class="dropdown-item" style="width: 250px;" href="#"><span class="d-flex justify-content-between position-relative align-items-center"><span class="mr-5">Electrical and Biomedical</span> <span class="ml-4"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></span></a>
@@ -46,24 +46,14 @@
                                 <a class="dropdown-item" href="#"><span class="d-flex justify-content-between position-relative align-items-center">Automotive <span class="ml-4"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></span></a>
                             </div>
                         </li>
+                        {{-- @dd($cat) --}}
+                        @foreach ($cat as $categories)
                         <li class="nav-item">
-                            <a href="{{ route('categories.ict') }}" class="nav-link link">ICT</a>
+                            <a href="{{ route('departments', strtolower($categories->id)) }}" class="nav-link link">
+                                {{ $categories->name }}
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link link">Mechanical</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link link">Civil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link link">Electrical and Biomedical</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link link">Laboratory Technology</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="#" class="nav-link link">Automotive</a>
-                        </li>
+                    @endforeach
                         <li class="nav-item flex-grow-1 mx-lg-2 my-2 my-lg-0">
                             <div class="position-relative">
                                 <span class="position-absolute top-50 start-0 translate-middle-y ms-3">

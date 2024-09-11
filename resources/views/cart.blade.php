@@ -27,7 +27,7 @@
                     <div class="card mb-3">
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div class="d-flex">
-                                <img src="{{ asset('assets/images/courses/' . $item->courses->image) }}" alt="{{ $item->courses->title }}" class="img-thumbnail" style="width: 100px;">
+                                <img src="{{ asset('uploads/' . $item->courses->thumbnail) }}" alt="{{ $item->courses->title }}" class="img-thumbnail" style="width: 100px;">
                                 <div class="ms-3">
                                     <h5 class="card-title">{{ $item->courses->title }}</h5>
                                     <p class="card-text">Price: TZS {{ $item->courses->price }}</p>

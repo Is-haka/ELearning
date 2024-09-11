@@ -55,8 +55,8 @@
             <div class="coding-exercises mb-5">
                 <div class="card border-0 shadow-sm">
                     <div class="card-body d-flex align-items-center">
-                        <div class="col-md-4 text-center">
-                            <img src="{{ asset('uploads/files/2.jpg') }}" class="img-fluid" alt="Coding Exercise">
+                        <div class="col-md-4 text-center p-3">
+                            <img src="{{ asset('uploads/files/2.jpg') }}" class="img-fluid rounded" alt="Coding Exercise">
                         </div>
                         <div class="col-md-8">
                             <h5 class="fw-bold">Coding Exercises</h5>
