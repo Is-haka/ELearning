@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <!-- Carousel Section -->
-    <section class="row justify-content-center mb-5">
+    <section class="row justify-content-center mb-5 pt-5">
         <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
                 @for ($i = 0; $i < 3; $i++)
@@ -14,9 +14,9 @@
             <div class="carousel-inner">
                 @php
                     $carouselItems = [
-                        ['image' => '1.jpg', 'title' => 'Unlock Your Potential', 'description' => 'Discover a world of knowledge with our diverse range of courses.'],
-                        ['image' => '2.jpg', 'title' => 'Learn from Experts', 'description' => 'Our instructors are industry professionals ready to share their expertise.'],
-                        ['image' => '3.jpg', 'title' => 'Flexible Learning', 'description' => 'Study at your own pace with our online and on-demand courses.']
+                        ['image' => '1.png', 'title' => 'Unlock Your Potential', 'description' => 'Discover a world of knowledge with our diverse range of courses.'],
+                        ['image' => '2.png', 'title' => 'Learn from Experts', 'description' => 'Our instructors are industry professionals ready to share their expertise.'],
+                        ['image' => '3.png', 'title' => 'Flexible Learning', 'description' => 'Study at your own pace with our online and on-demand courses.']
                     ];
                 @endphp
 
@@ -29,7 +29,6 @@
                             <div class="carousel-text-wrapper col-md-5 d-md-block d-none">
                                 <h2 class="fw-bold mb-3">{{ $item['title'] }}</h2>
                                 <p class="fs-5 w-75">{{ $item['description'] }}</p>
-                                {{-- <a href="#" class="btn btn-success rounded-medium mt-3">Explore Courses</a> --}}
                             </div>
                         </div>
                     </div>
