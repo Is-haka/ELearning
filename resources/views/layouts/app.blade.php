@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -24,7 +23,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold fs-2" href="{{ url('/') }}">
-                    {{ config('app.name', 'ATC') }}
+                    <img src="{{ asset('uploads/files/atc.svg') }}" alt="ATC Logo" width="150" height="50">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -38,12 +37,16 @@
                                 Categories
                             </a>
                             <div class="dropdown-menu" aria-labelledby="categoriesDropdown">
-                                <a class="dropdown-item" href="#"><span class="d-flex justify-content-between position-relative align-items-center">ICT <span class="ml-4"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></span></a>
-                                <a class="dropdown-item" href="#"><span class="d-flex justify-content-between position-relative align-items-center">Mechanical <span class="ml-4"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></span></a>
-                                <a class="dropdown-item" href="#"><span class="d-flex justify-content-between position-relative align-items-center">Civil <span class="ml-4"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></span></a>
-                                <a class="dropdown-item" style="width: 250px;" href="#"><span class="d-flex justify-content-between position-relative align-items-center"><span class="mr-5">Electrical and Biomedical</span> <span class="ml-4"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></span></a>
-                                <a class="dropdown-item" href="#"><span class="d-flex justify-content-between position-relative align-items-center">Laboratory Technology <span class="ml-4"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></span></a>
-                                <a class="dropdown-item" href="#"><span class="d-flex justify-content-between position-relative align-items-center">Automotive <span class="ml-4"><i class="fa fa-chevron-right" aria-hidden="true"></i></span></span></a>
+                                    @foreach ($cat as $categories)
+                                    <a class="dropdown-item" href="{{ route('departments', strtolower($categories->id)) }}">
+                                        <span class="d-flex justify-content-between position-relative align-items-center"  style="width: 250px;">
+                                            {{ $categories->name }}
+                                            <span class="ml-4">
+                                                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                                            </span>
+                                        </span>
+                                    </a>
+                                    @endforeach
                             </div>
                         </li>
                         {{-- @dd($cat) --}}
