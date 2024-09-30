@@ -144,8 +144,8 @@ class CartController extends Controller
 
         // Redirect to the course page (assuming you want to redirect to the first course)
         $firstCourseId = $cartItems->first()->course_id;
-        return redirect()->route('course.view', ['course_id' => $firstCourseId], compact('cat'))
-                         ->with('success', 'You have been enrolled in the course.');
+        return redirect()->route('course.view', ['course_id' => $firstCourseId])
+               ->with('success', 'You have been enrolled in the course.')->with('cat', $cat);
     }
 
 }

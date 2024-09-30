@@ -23,7 +23,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top">
             <div class="container-fluid">
                 <a class="navbar-brand fw-bold fs-2" href="{{ url('/') }}">
-                    <img src="{{ asset('uploads/files/atc.svg') }}" alt="ATC Logo" width="150" height="50">
+                    <img src="{{ asset('uploads/files/atc.png') }}" alt="ATC Logo" width="150" height="50">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -69,9 +69,6 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">Teach at ATC</a>
-                        </li>
                         <li class="nav-item">
                             <a href="{{ route('cart') }}" class="nav-link">
                                 <i class="fas fa-shopping-cart text-success"></i>

@@ -179,7 +179,7 @@
                     @else
                         <!-- For guest users, show only the Add to Cart button and Enroll Now form -->
                         <a href="{{ route('cart.add', ['course_id' => $courses->id]) }}" class="btn btn-success btn-sm w-100 mb-3">Add to Cart</a>
-                        <a href="{{ route('login') }}" class="btn btn-outline-secondary btn-sm w-100">Enroll Now</a>
+                        <a href="{{ route('course.enroll.link', ['course_id' => $courses->id]) }}" class="btn btn-outline-secondary btn-sm w-100">Enroll Now</a>
                     @endauth
 
                     <p class="text-muted mt-2">30-Day Money-Back Guarantee</p>

@@ -110,5 +110,133 @@
         </div>
 
     </section>
+    <section class="row mb-5">
+        <div class="container mt-5">
+            <h2 class="mb-4">All Courses by Department</h2>
+
+            <ul class="nav nav-tabs" id="courseTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="ict-tab" data-bs-toggle="tab" data-bs-target="#ict" type="button" role="tab" aria-controls="ict" aria-selected="true">ICT Department</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="civil-tab" data-bs-toggle="tab" data-bs-target="#civil" type="button" role="tab" aria-controls="civil" aria-selected="false">Civil Engineering Department</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="electrical-tab" data-bs-toggle="tab" data-bs-target="#electrical" type="button" role="tab" aria-controls="electrical" aria-selected="false">Electrical Department</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="courseTabsContent">
+                <div class="tab-pane fade show active" id="ict" role="tabpanel" aria-labelledby="ict-tab">
+                    <div class="table-responsive mt-3">
+                        <table class="table table-hover table-inverse">
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Course Name</th>
+                                    <th>Course Descriptions</th>
+                                    <th>Mode of Delivery</th>
+                                    <th>Delivery Location</th>
+                                    <th>Duration</th>
+                                    <th>Entry Qualification</th>
+                                    <th>Starting Date</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">1</td>
+                                    <td>Web Design & Development</td>
+                                    <td>Comprehensive course on web design and development</td>
+                                    <td>Remote/Online</td>
+                                    <td>Online Platform</td>
+                                    <td>3 months</td>
+                                    <td>Basic Computer Knowledge</td>
+                                    <td>October 1, 2024</td>
+                                    <td>TZS 500,000/-</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">2</td>
+                                    <td>CCNA</td>
+                                    <td>Networking fundamentals and Cisco technologies</td>
+                                    <td>Physical/On-site</td>
+                                    <td>Dar es Salaam, Tanzania</td>
+                                    <td>6 months</td>
+                                    <td>High School Diploma</td>
+                                    <td>November 10, 2024</td>
+                                    <td>TZS 700,000/-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="civil" role="tabpanel" aria-labelledby="civil-tab">
+                    <div class="table-responsive mt-3">
+                        <table class="table table-hover table-inverse">
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Course Name</th>
+                                    <th>Course Descriptions</th>
+                                    <th>Mode of Delivery</th>
+                                    <th>Delivery Location</th>
+                                    <th>Duration</th>
+                                    <th>Entry Qualification</th>
+                                    <th>Starting Date</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">1</td>
+                                    <td>Structural Engineering</td>
+                                    <td>Fundamentals of structural design and analysis</td>
+                                    <td>Physical/On-site</td>
+                                    <td>Dar es Salaam, Tanzania</td>
+                                    <td>5 months</td>
+                                    <td>High School Diploma with Mathematics and Physics</td>
+                                    <td>September 15, 2024</td>
+                                    <td>TZS 800,000/-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="electrical" role="tabpanel" aria-labelledby="electrical-tab">
+                    <div class="table-responsive mt-3">
+                        <table class="table table-hover table-inverse">
+                            <thead class="thead-inverse">
+                                <tr>
+                                    <th>SN</th>
+                                    <th>Course Name</th>
+                                    <th>Course Descriptions</th>
+                                    <th>Mode of Delivery</th>
+                                    <th>Delivery Location</th>
+                                    <th>Duration</th>
+                                    <th>Entry Qualification</th>
+                                    <th>Starting Date</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">1</td>
+                                    <td>Electrical Engineering Basics</td>
+                                    <td>Introduction to electrical engineering principles</td>
+                                    <td>Physical/On-site</td>
+                                    <td>Arusha, Tanzania</td>
+                                    <td>5 months</td>
+                                    <td>High School Diploma with Physics</td>
+                                    <td>October 20, 2024</td>
+                                    <td>TZS 750,000/-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </div>
 @endsection

@@ -13,21 +13,13 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-
             // Foreign key to instructors table
-            $table->foreignId('instructor_id')
-                  ->constrained('instructor')
-                  ->onDelete('cascade')->onUpdate('cascade');  // Automatically delete course if instructor is deleted
-
+            $table->foreignId('instructor_id')->constrained('instructor')->onDelete('cascade')->onUpdate('cascade');  // Automatically delete course if instructor is deleted
             $table->string('title');
             $table->text('description');
             $table->decimal('price', 8, 2);
-
             // Foreign key to categories table
-            $table->foreignId('categories_id')
-                  ->constrained('categories')
-                  ->onDelete('cascade')->onUpdate('cascade');  // Automatically delete course if category is deleted
-
+            $table->foreignId('categories_id')->constrained('categories')->onDelete('cascade')->onUpdate('cascade');  // Automatically delete course if category is deleted
             $table->string('language');
             $table->string('thumbnail')->nullable();
             $table->timestamps();

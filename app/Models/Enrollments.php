@@ -15,6 +15,7 @@ class Enrollments extends Model
         'user_id',
         'course_id',
         'status',
+        'duration'
     ];
 
     /**

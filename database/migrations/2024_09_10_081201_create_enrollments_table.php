@@ -12,15 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('enrollments', function (Blueprint $table) {
-            $table->bigIncrements('id');                           // Primary Key
-            $table->foreignId('user_id')            // Foreign key to users table
-                  ->constrained('users')
-                  ->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('course_id')          // Foreign key to courses table
-                  ->constrained('courses')
-                  ->onDelete('cascade')->onUpdate('cascade');
-            $table->enum('status', ['enrolled', 'not enrolled', 'completed', 'cancelled']) // Enrollment status
-                  ->default('not enrolled');
+            $table->bigIncrements('id');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('course_id')->constrained('courses')->onDelete('cascade')->onUpdate('cascade');
+            $table->enum('status', ['enrolled', 'not enrolled', 'completed', 'cancelled'])->default('not enrolled');
             $table->timestamps();
         });
     }

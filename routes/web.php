@@ -32,6 +32,7 @@ Route::prefix('courses')->group( function () {
     Route::get('/course/{id}', [CourseController::class, 'course'])->name('course');
     Route::get('/course/{course_id}', [CourseController::class, 'view'])->name('course.view');
     Route::post('/course/enroll/{course_id}', [CourseController::class, 'enrollCourse'])->name('course.enroll');
+    Route::get('/course/enroll/{course_id}', [CourseController::class, 'enrollCourse'])->name('course.enroll.link');
 });
 
 //Cart routes
