@@ -67,7 +67,7 @@
     }
 
     .department-container {
-        background: linear-gradient(135deg, #3d4058a8 0%, #09802d 100%);
+        background: linear-gradient(135deg, #3d4058a8 0%, #31D843 100%);
         color: white;
     }
 
