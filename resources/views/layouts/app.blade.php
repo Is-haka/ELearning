@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    @stack('styles')
 </head>
 <body>
     <div id="app">
@@ -114,7 +115,53 @@
             @yield('content')
         </main>
     </div>
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <!-- About Section -->
+                <div class="col-md-4">
+                    <h5 class="text-uppercase text-success">About Us</h5>
+                    <p class="text-light">
+                        ATC is committed to providing quality education and services. Learn more about our courses and programs.
+                    </p>
+                </div>
 
+                <!-- Quick Links -->
+                <div class="col-md-4">
+                    <h5 class="text-uppercase text-success">Quick Links</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li><a href="{{ url('/') }}" class="text-white">Home</a></li>
+                        <li><a href="#" class="text-white">Departments</a></li>
+                        <li><a href="#" class="text-white">Contact Us</a></li>
+                        <li><a href="#" class="text-white">About Us</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="col-md-4">
+                    <h5 class="text-uppercase text-success">Contact Us</h5>
+                    <ul class="list-unstyled text-light">
+                        <li><i class="fas fa-envelope fa-fw"></i> info@atc.ac.tz</li>
+                        <li><i class="fas fa-phone fa-fw"></i> +255 123 456 789</li>
+                        <li><i class="fas fa-map-marker-alt fa-fw"></i> 123 ATC Nairobi Road, ATC Street, Tanzania</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="border border-light">
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="text-light">&copy; {{ date('Y') }} ATC. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="https://facebook.com" class="text-white me-2"><i class="fab fa-facebook fa-fw"></i></a>
+                    <a href="https://twitter.com" class="text-white me-2"><i class="fab fa-twitter fa-fw"></i></a>
+                    <a href="https://instagram.com" class="text-white"><i class="fab fa-instagram fa-fw"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @stack('scripts')
     <script>
     document.addEventListener('DOMContentLoaded', function() {
     var dropdown = document.querySelector('.dropdown');
