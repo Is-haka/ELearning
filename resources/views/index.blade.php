@@ -57,7 +57,7 @@
                     @else
                         @foreach ($cat->take(6) as $category)
                             <li class="nav-item m-1" role="presentation">
-                                <button class="nav-link ftab rounded-pill @if ($loop->first) active @endif"
+                                <button class="nav-link text-uppercase ftab rounded-pill @if ($loop->first) active @endif"
                                         id="{{ Str::slug($category->name) }}-tab"
                                         data-bs-toggle="tab"
                                         data-bs-target="#{{ Str::slug($category->name) }}"
@@ -101,7 +101,7 @@
                                             <div class="card-img-top-wrapper">
                                                 <img src="{{ asset('uploads/' . $course->thumbnail) }}" class="card-img-top" alt="{{ $course->name }} course">
                                                 <div class="card-img-overlay d-flex align-items-start justify-content-end">
-                                                    <span class="badge bg-success"><i class="fas fa-tag"></i> {{ $category->name }}</span>
+                                                    <span class="badge" style="background: var(--third-color);"><i class="fas fa-tag"></i> {{ $category->name }}</span>
                                                 </div>
                                             </div>
                                         </a>
@@ -134,7 +134,7 @@
                 <ul class="nav nav-tabs" id="courseTabs" role="tablist">
                     @foreach ($cat as $category)
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link @if ($loop->first) active @endif"
+                            <button class="nav-link text-uppercase @if ($loop->first) active @endif"
                                     id="{{ Str::slug($category->name) }}-tab"
                                     data-bs-toggle="tab"
                                     data-bs-target="#{{ Str::slug($category->name) . "all" }}"
@@ -189,7 +189,7 @@
                                                 <td>
                                                     {{ $course->description }}
                                                     <br>
-                                                    <a href="{{ route('course', ['id' => $course->id]) }}">view more course details</a>
+                                                    <a style="color: var(--third-color);" href="{{ route('course', ['id' => $course->id]) }}">view more course details</a>
                                                 </td>
                                                 <td>{{ $course->mode_of_delivery }}</td>
                                                 <td>{{ $course->delivery_location }}</td>
@@ -223,20 +223,18 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(45deg, #28a745, #20c997);
-        filter: blur(5px);
+        background: linear-gradient(45deg, green 0%, #31D843 100%);
         opacity: 0.8;
         z-index: 0;
     }
 
     #courseTabs {
         background-color: rgba(255, 255, 255, 0.2);
-        backdrop-filter: blur(5px);
         z-index: 1;
     }
 
     #courseTabs .ftab {
-        color: white;
+        color: black;
         font-weight: 600;
         transition: all 0.3s ease;
         border: 1px solid transparent;
@@ -253,7 +251,7 @@
 
     #courseTabs .ftab.active {
         background-color: white;
-        color: #28a745;
+        color: var(--third-color);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         transform: translateY(-2px);
     }
@@ -285,17 +283,17 @@
     }
 
     .btn-success, .btn-outline-success:hover {
-        background-color: #28a745;
-        border-color: #28a745;
+        background-color: var(--third-color);
+        border-color: var(--third-color);
     }
 
     .btn-outline-success {
-        color: #28a745;
-        border-color: #28a745;
+        color: var(--third-color);
+        border-color: var(--third-color);
     }
 
     .text-success {
-        color: #28a745 !important;
+        color: var(--third-color) !important;
     }
     .course-card {
         transition: all 0.3s ease;
@@ -362,11 +360,11 @@
     }
 
     .btn-outline-success:hover {
-        background-color: #09802d;
+        background-color: var(--third-color);
         color: white;
     }
     .course-tabs {
-    background: linear-gradient(45deg, #28a745, #34ce57);
+    /* background: linear-gradient(45deg, green 0%, #31D843 100%); */
     padding: 10px;
     border-radius: 8px 8px 0 0;
 }
@@ -376,7 +374,7 @@
 }
 
 .course-tabs .nav-link {
-    color: white;
+    color: black;
     border: none;
     padding: 10px 20px;
     margin-right: 5px;
@@ -390,7 +388,7 @@
 
 .course-tabs .nav-link.active {
     background-color: white;
-    color: #28a745;
+    color: var(--third-color);
     font-weight: bold;
 }
 
