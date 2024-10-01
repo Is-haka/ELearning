@@ -50,14 +50,13 @@
                                     @endforeach
                             </div>
                         </li>
-                        {{-- @dd($cat) --}}
-                        @foreach ($cat as $categories)
-                        <li class="nav-item">
-                            <a href="{{ route('departments', strtolower($categories->id)) }}" class="nav-link link">
-                                {{ $categories->name }}
-                            </a>
-                        </li>
-                    @endforeach
+                        @foreach ($cat->take(6) as $categories)
+                            <li class="nav-item">
+                                <a href="{{ route('departments', strtolower($categories->id)) }}" class="nav-link link">
+                                    {{ $categories->name }}
+                                </a>
+                            </li>
+                        @endforeach
                         <li class="nav-item flex-grow-1 mx-lg-2 my-2 my-lg-0">
                             <div class="position-relative">
                                 <span class="position-absolute top-50 start-0 translate-middle-y ms-3">

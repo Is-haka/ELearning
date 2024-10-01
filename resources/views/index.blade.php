@@ -55,7 +55,7 @@
                     @if ($courses->isEmpty())
                         <p>No course available</p>
                     @else
-                        @foreach ($cat as $category)
+                        @foreach ($cat->take(6) as $category)
                             <li class="nav-item m-1" role="presentation">
                                 <button class="nav-link ftab rounded-pill @if ($loop->first) active @endif"
                                         id="{{ Str::slug($category->name) }}-tab"
@@ -189,7 +189,7 @@
                                                 <td>
                                                     {{ $course->description }}
                                                     <br>
-                                                    <a href="{{ route('course', ['id' => $course->id]) }}">read course details</a>
+                                                    <a href="{{ route('course', ['id' => $course->id]) }}">view more course details</a>
                                                 </td>
                                                 <td>{{ $course->mode_of_delivery }}</td>
                                                 <td>{{ $course->delivery_location }}</td>
