@@ -33,13 +33,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
+                        <li class="nav-item text-uppercase dropdown">
                             <a href="#" class="nav-link categories" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Categories
                             </a>
                             <div class="dropdown-menu" aria-labelledby="categoriesDropdown">
                                     @foreach ($cat as $categories)
-                                    <a class="dropdown-item" href="{{ route('departments', strtolower($categories->id)) }}">
+                                    <a class="dropdown-item text-uppercase" href="{{ route('departments', strtolower($categories->id)) }}">
                                         <span class="d-flex justify-content-between position-relative align-items-center"  style="width: 250px;">
                                             {{ $categories->name }}
                                             <span class="ml-4">
@@ -114,7 +114,7 @@
             @yield('content')
         </main>
     </div>
-    <footer class="bg-dark text-white py-4 mt-5">
+    <footer class="text-white py-4 mt-5 footer">
         <div class="container">
             <div class="row">
                 <!-- About Section -->
