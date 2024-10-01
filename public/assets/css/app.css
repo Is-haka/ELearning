@@ -1,23 +1,29 @@
+:root {
+    --primary-color: #3eff8b;
+    --secondary-color: #31D843;
+    --third-color: green;
+}
+
 /* For WebKit Browsers (Chrome, Safari) */
 ::-webkit-scrollbar {
-    width: 12px; /* Width of the scrollbar */
-    height: 12px; /* Height of the scrollbar */
+    width: 12px;
+    height: 12px;
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #28a745; /* Color of the scrollbar thumb */
-    border-radius: 6px; /* Rounded corners */
+    background: linear-gradient(45deg, var(--secondary-color), var(--third-color));
+    border-radius: 6px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #f1f1f1; /* Background of the scrollbar track */
-    border-radius: 6px; /* Rounded corners */
+    background: #f1f1f1;
+    border-radius: 6px;
 }
 
 /* For Firefox */
 .scrollable {
-    scrollbar-width: thin; /* Makes the scrollbar thin */
-    scrollbar-color: #28a745 #f1f1f1; /* thumb color, track color */
+    scrollbar-width: thin;
+    scrollbar-color: var(--third-color) #f1f1f1;
 }
 
 .carousel-item {
@@ -41,24 +47,24 @@
 }
 
 .course-card:hover {
-    box-shadow: 0px 2px 2px #d9d9d9d9 !important;
+    box-shadow: 0px 2px 2px var(--primary-color) !important;
     transform: scale(1.009);
     transition: all 0.2s ease-in-out;
 }
 .link:hover {
-    color: green;
+    color: var(--primary-color);
 }
 
 .dropdown-menu {
     display: none;
     position: absolute;
-    top: 100%; /* Position it right below the parent */
+    top: 100%;
     left: 0;
-    margin-top: 0.5rem !important; /* Small gap between navbar and dropdown */
+    margin-top: 0.5rem !important;
     background-color: #fff;
     min-width: 150px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1000; /* Ensure it's above other content */
+    z-index: 1000;
     border: none !important;
     padding: 0.5rem 0;
 }
@@ -72,7 +78,7 @@
 
 .dropdown-menu .dropdown-item:hover {
     background-color: #f1f1f1;
-    color: green;
+    color: var(--primary-color);
 }
 
 .dropdown:hover .dropdown-menu {
@@ -150,16 +156,19 @@
 }
 
 .empty-cart .btn-continue {
-    background-color: #6f42c1;
-    color: #615252;
+    background-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .empty-cart .btn-continue:hover {
-    background-color: #5a32a8;
-    color: #413434;
+    background-color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .cart-header h1 {
-    font-weight: 750; /* Make the title bold */
-    text-align: left; /* Align the title to the left */
+    font-weight: 750;
+    text-align: left;
+}
+.footer {
+    background: rgba(0, 0, 0, 0.844);
 }
