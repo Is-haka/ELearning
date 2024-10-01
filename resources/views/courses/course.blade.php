@@ -21,7 +21,7 @@
                 <div class="course-meta mb-5">
                     <div class="card shadow-lg border-0 rounded-lg">
                         <div class="card-body">
-                            <h3 class="card-title text-success mb-4">What You'll Learn</h3>
+                            <h3 class="card-title mb-4"style="color: var(--third-color);">What You'll Learn</h3>
                             <div class="row">
                                 @foreach(['Master Python 2 and 3 professionally',
                                           'Create exciting games like Tic Tac Toe and Blackjack',
@@ -31,7 +31,7 @@
                                           'Apply Object-Oriented Programming concepts'] as $item)
                                     <div class="col-md-6 mb-3">
                                         <div class="d-flex align-items-center">
-                                            <i class="fas fa-check-circle text-success me-2 fa-lg"></i>
+                                            <i class="fas fa-check-circle me-2 fa-lg"style="color: var(--third-color);"></i>
                                             <span>{{ $item }}</span>
                                         </div>
                                     </div>
@@ -46,10 +46,10 @@
                     <h3 class="fw-bold mb-3">Course Overview</h3>
                     <p class="lead">{{ $courses->description }}</p>
                     <div class="mt-4">
-                        <button class="btn btn-outline-success me-2 mb-2" data-bs-toggle="modal" data-bs-target="#courseDemo">
+                        <button class="btn btn-sm me-2 mb-2 text-white" data-bs-toggle="modal" data-bs-target="#courseDemo" style="background: var(--third-color);">
                             <i class="fas fa-play-circle me-2"></i>Watch Course Demo
                         </button>
-                        <button class="btn btn-outline-secondary mb-2" data-bs-toggle="modal" data-bs-target="#syllabusModal">
+                        <button class="btn btn-sm btn-outline-secondary mb-2" data-bs-toggle="modal" data-bs-target="#syllabusModal">
                             <i class="fas fa-file-alt me-2"></i>View Full Syllabus
                         </button>
                     </div>
@@ -66,7 +66,7 @@
                                     <h4 class="mb-1">{{ $courses->instructor->name }}</h4>
                                     <p class="text-muted mb-2">{{ $courses->instructor->title }}</p>
                                     <p>{{ $courses->instructor->instructor_description }}</p>
-                                    <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#instructorBio">
+                                    <button class="btn btn-sm btn-sm text-white" data-bs-toggle="modal" data-bs-target="#instructorBio"style="background: var(--third-color);">
                                         <i class="fas fa-user me-2"></i>Full Bio
                                     </button>
                                 </div>
@@ -86,7 +86,7 @@
                                 <div class="col-md-8">
                                     <h3 class="fw-bold mb-3">Hands-on Coding Exercises</h3>
                                     <p class="lead">Practice your skills with our updated, interactive coding exercises. Apply what you learn in real-time!</p>
-                                    <button class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#exerciseDemo">
+                                    <button class="btn btn-sm mt-2 text-white" data-bs-toggle="modal" data-bs-target="#exerciseDemo" style="background: var(--third-color);">
                                         <i class="fas fa-laptop-code me-2"></i>Try a Sample Exercise
                                     </button>
                                 </div>
@@ -112,17 +112,20 @@
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#courseContentAccordion">
                                 <div class="accordion-body">
-                                    <p class="alert alert-info">{{ $firstLesson->duration }} minutes - {{ $firstLesson->description }}</p>
+                                    <p class="alert alert-success">{{ $firstLesson->duration }} minutes - {{ $firstLesson->description }}</p>
                                     <ul class="list-group">
                                         @foreach($firstLesson->lessonTypes as $type)
                                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <span><i class="fas fa-file-alt me-2 text-primary"></i>{{ $firstLesson->title }}</span>
-                                                <a href="{{ asset('uploads/' . $type->reading) }}" target="_blank" class="btn btn-sm btn-outline-success">
+                                                <span><i class="fas fa-file-alt me-2" style="color: var(--third-color);"></i>{{ $firstLesson->title }}</span>
+                                                <button class="btn btn-sm btn-outline-success load-content"
+                                                        data-url="{{ asset('uploads/' . $type->reading) }}"
+                                                        data-target="content-first-{{ $loop->index }}">
                                                     <i class="fas fa-eye me-1"></i>Preview
-                                                </a>
+                                                </button>
                                             </li>
                                         @endforeach
                                     </ul>
+                                    <div class="content-display mt-3" id="content-first-0"></div>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +136,7 @@
                         <div class="accordion-item border-0">
                             <h2 class="accordion-header" id="headingTwo-{{ $index }}">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo-{{ $index }}" aria-expanded="false" aria-controls="collapseTwo-{{ $index }}">
-                                    <i class="fas fa-book-open me-2"></i>
+                                    <i class="fas fa-book-open me-2" style="color: var(--third-color);"></i>
                                     {{ $lesson->title }}
                                     @if(!$enrolled || $enrolled->status !== 'enrolled')
                                         <span class="ms-2 badge bg-warning text-dark"><i class="fas fa-lock fa-sm fa-fw"></i> Locked</span>
@@ -142,15 +145,17 @@
                             </h2>
                             <div id="collapseTwo-{{ $index }}" class="accordion-collapse collapse" aria-labelledby="headingTwo-{{ $index }}" data-bs-parent="#courseContentAccordion">
                                 <div class="accordion-body">
-                                    <p class="alert alert-info">{{ $lesson->duration }} minutes - {{ $lesson->description }}</p>
+                                    <p class="alert alert-success">{{ $lesson->duration }} minutes - {{ $lesson->description }}</p>
                                     <ul class="list-group">
-                                        @foreach($lesson->lessonTypes as $type)
+                                        @foreach($lesson->lessonTypes as $typeIndex => $type)
                                             <li class="list-group-item d-flex justify-content-between align-items-center">
-                                                <span><i class="fas fa-file-alt me-2 text-primary"></i>{{ $lesson->title }}</span>
+                                                <span><i class="fas fa-file-alt me-2" style="color: var(--third-color);"></i>{{ $lesson->title }}</span>
                                                 @if($enrolled && $enrolled->status === 'enrolled')
-                                                    <a href="{{ asset('uploads/'. $type->reading) }}" target="_blank" class="btn btn-sm btn-outline-success">
+                                                    <button class="btn btn-sm btn-outline-success load-content"
+                                                            data-url="{{ asset('uploads/'. $type->reading) }}"
+                                                            data-target="content-{{ $index }}-{{ $typeIndex }}">
                                                         <i class="fas fa-eye me-1"></i>View
-                                                    </a>
+                                                    </button>
                                                 @else
                                                     <span class="btn btn-sm btn-outline-secondary" style="cursor: not-allowed;">
                                                         <i class="fas fa-lock me-1"></i>Locked
@@ -159,6 +164,7 @@
                                             </li>
                                         @endforeach
                                     </ul>
+                                    <div class="content-display mt-3" id="content-{{ $index }}-0"></div>
                                     @if(!$enrolled || $enrolled->status !== 'enrolled')
                                         <div class="alert alert-warning mt-3">
                                             <i class="fas fa-info-circle me-2"></i>This lesson is locked. Enroll in the course to access all content.
@@ -187,10 +193,10 @@
                                 @if(auth()->check())
                                     <form action="{{ route('course.enroll', ['course_id' => $courses->id]) }}" method="POST">
                                         @csrf
-                                        <button type="submit" class="btn btn-secondary w-100"><i class="fas fa-user-plus me-2"></i>Enroll Now</button>
+                                        <button type="submit" class="btn btn-outline-secondary w-100"><i class="fas fa-user-plus me-2"></i>Enroll Now</button>
                                     </form>
                                 @else
-                                    <button class="btn btn-outline-success w-100" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                    <button class="btn btn-outline-secondary w-100" data-bs-toggle="modal" data-bs-target="#loginModal">
                                         <i class="fas fa-user me-2"></i>Login to Enroll
                                     </button>
                                 @endif
@@ -219,7 +225,7 @@
                                             <i class="fas fa-shopping-cart me-2"></i>Go to Cart
                                         </a>
                                     @else
-                                        <a href="{{ route('cart.add', ['course_id' => $courses->id]) }}" class="btn btn-success btn-sm w-100 mb-3">
+                                        <a href="{{ route('cart.add', ['course_id' => $courses->id]) }}" class="btn btn-sm w-100 mb-3 text-white" style="background: var(--third-color);">
                                             <i class="fas fa-cart-plus me-2"></i>Add to Cart
                                         </a>
                                     @endif
@@ -233,10 +239,10 @@
                                     </button>
                                 @endif
                             @else
-                                <a href="{{ route('cart.add', ['course_id' => $courses->id]) }}" class="btn btn-success btn-sm w-100 mb-3">
+                                <a href="{{ route('cart.add', ['course_id' => $courses->id]) }}" class="btn btn-sm w-100 mb-3 text-white" style="background: var(--third-color);>
                                     <i class="fas fa-cart-plus me-2"></i>Add to Cart
                                 </a>
-                                <a href="{{ route('course.enroll.link', ['course_id' => $courses->id]) }}" class="btn btn-outline-success btn-sm w-100">Enroll Now</a>
+                                <a href="{{ route('course.enroll.link', ['course_id' => $courses->id]) }}" class="btn btn-outline-secondary btn-sm w-100">Enroll Now</a>
                             @endauth
 
                             <p class="text-muted mt-3">
@@ -249,12 +255,12 @@
                         <div class="card-body">
                             <h4 class="fw-bold mb-3">This Course Includes:</h4>
                             <ul class="list-unstyled">
-                                <li class="mb-2"><i class="fas fa-video text-success me-2"></i> {{ $totalLessons }} on-demand video lessons</li>
-                                <li class="mb-2"><i class="fas fa-file-download text-success me-2"></i> Downloadable resources</li>
-                                <li class="mb-2"><i class="fas fa-infinity text-success me-2"></i> Full lifetime access</li>
-                                <li class="mb-2"><i class="fas fa-mobile-alt text-success me-2"></i> Access on mobile and TV</li>
-                                <li class="mb-2"><i class="fas fa-certificate text-success me-2"></i> Certificate of completion</li>
-                                <li><i class="fas fa-headset text-success me-2"></i> 24/7 Support</li>
+                                <li class="mb-2"><i class="fas fa-video me-2" style="color: var(--third-color);"></i> {{ $totalLessons }} on-demand video lessons</li>
+                                <li class="mb-2"><i class="fas fa-file-download me-2" style="color: var(--third-color);"></i> Downloadable resources</li>
+                                <li class="mb-2"><i class="fas fa-infinity me-2" style="color: var(--third-color);"></i> Full lifetime access</li>
+                                <li class="mb-2"><i class="fas fa-mobile-alt me-2" style="color: var(--third-color);"></i> Access on mobile and TV</li>
+                                <li class="mb-2"><i class="fas fa-certificate me-2" style="color: var(--third-color);"></i> Certificate of completion</li>
+                                <li><i class="fas fa-headset me-2" style="color: var(--third-color);"></i> 24/7 Support</li>
                             </ul>
                         </div>
                     </div>
@@ -266,7 +272,7 @@
                                 {{-- @foreach ($similarCourses as $similarCourse) --}}
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         <a href="#" class="text-decoration-none text-primary">
-                                            <i class="fas fa-book-open text-success me-2"></i> New similar course
+                                            <i class="fas fa-book-open me-2" style="color: var(--third-color);"></i> New similar course
                                         </a>
                                         <span class="badge bg-primary rounded-pill">TZS {{ number_format(rand(40000, 60000), 0) }}/-</span>
                                     </li>
@@ -376,8 +382,238 @@
 @push('styles')
 <style>
     .hero-section {
-        background: linear-gradient(135deg, #3d4058a8 0%, #09802d 100%);
+        background: linear-gradient(135deg, #3d4058a8 0%, var(--secondary-color) 100%);
         color: white;
     }
+    .content-display {
+            max-height: 500px;
+            overflow-y: auto;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            position: relative;
+            display: none; /* Hide by default */
+        }
+        .content-display.active {
+            display: block; /* Show when active */
+        }
+        .content-display img, .content-display canvas {
+            max-width: 100%;
+            height: auto;
+        }
+        .content-display pre, .content-display .html-content {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-width: 100%;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        .dismiss-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #f8f9fa;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+        }
+        .dismiss-button:hover {
+            background-color: #e2e6ea;
+        }
 </style>
+@endpush
+@push('scripts')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.9.359/pdf.worker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.0/mammoth.browser.min.js"></script>
+<script>
+    // First, let's add the CSS for the loader
+const style = document.createElement('style');
+style.textContent = `
+    .content-loader {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
+    }
+    .loader {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+`;
+document.head.appendChild(style);
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.load-content').forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const url = this.getAttribute('data-url');
+            const targetId = this.getAttribute('data-target');
+            const contentContainer = document.getElementById(targetId);
+
+            // Hide all other content displays in this accordion item
+            const accordionItem = this.closest('.accordion-item');
+            accordionItem.querySelectorAll('.content-display').forEach(display => {
+                if (display.id !== targetId) {
+                    display.classList.remove('active');
+                }
+            });
+
+            // Show and load the clicked content
+            contentContainer.classList.add('active');
+
+            // Add loader
+            contentContainer.innerHTML = '<div class="content-loader"><div class="loader"></div></div>';
+
+            if (!contentContainer.querySelector('.dismiss-button')) {
+                const dismissButton = document.createElement('button');
+                dismissButton.className = 'dismiss-button';
+                dismissButton.innerHTML = '×';
+                dismissButton.addEventListener('click', function() {
+                    contentContainer.classList.remove('active');
+                });
+                contentContainer.appendChild(dismissButton);
+            }
+
+            fetch(url)
+                .then(response => response.blob())
+                .then(blob => {
+                    const fileExtension = url.split('.').pop().toLowerCase();
+                    displayContent(blob, fileExtension, contentContainer);
+                })
+                .catch(error => {
+                    console.error('Error loading content:', error);
+                    contentContainer.innerHTML = '<p class="text-danger">Error loading content. Please try again.</p>';
+                    const dismissButton = contentContainer.querySelector('.dismiss-button');
+                    if (dismissButton) contentContainer.appendChild(dismissButton);
+                });
+        });
+    });
+
+    function displayContent(blob, fileExtension, container) {
+        // Clear previous content except the dismiss button
+        const dismissButton = container.querySelector('.dismiss-button');
+        container.innerHTML = '';
+        if (dismissButton) {
+            container.appendChild(dismissButton);
+        }
+
+        // Add loader again as content is being processed
+        const loader = document.createElement('div');
+        loader.className = 'content-loader';
+        loader.innerHTML = '<div class="loader"></div>';
+        container.appendChild(loader);
+
+        switch(fileExtension) {
+            case 'pdf':
+                renderPdfAsImages(blob, container);
+                break;
+            case 'txt':
+                renderTextFile(blob, container);
+                break;
+            case 'html':
+            case 'htm':
+                renderHtmlFile(blob, container);
+                break;
+            case 'doc':
+            case 'docx':
+                renderWordDocument(blob, container);
+                break;
+            case 'jpg':
+            case 'jpeg':
+            case 'png':
+            case 'gif':
+                renderImage(blob, container);
+                break;
+            default:
+                container.innerHTML += `<p>Unable to preview this file type (${fileExtension}).</p>`;
+        }
+    }
+
+    function renderPdfAsImages(blob, container) {
+        const url = URL.createObjectURL(blob);
+        pdfjsLib.getDocument(url).promise.then(function(pdf) {
+            // Remove loader once we start rendering pages
+            container.querySelector('.content-loader').remove();
+
+            for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+                pdf.getPage(pageNum).then(function(page) {
+                    const scale = 1.5;
+                    const viewport = page.getViewport({ scale: scale });
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+                    container.appendChild(canvas);
+
+                    const renderContext = {
+                        canvasContext: context,
+                        viewport: viewport
+                    };
+                    page.render(renderContext);
+                });
+            }
+        }).catch(error => {
+            console.error('Error rendering PDF:', error);
+            container.innerHTML += '<p class="text-danger">Error rendering PDF. Please try again.</p>';
+        });
+    }
+
+    function renderTextFile(blob, container) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            container.querySelector('.content-loader').remove();
+            container.innerHTML += `<pre>${e.target.result}</pre>`;
+        };
+        reader.readAsText(blob);
+    }
+
+    function renderHtmlFile(blob, container) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            container.querySelector('.content-loader').remove();
+            container.innerHTML += `<div class="html-content">${e.target.result}</div>`;
+        };
+        reader.readAsText(blob);
+    }
+
+    function renderWordDocument(blob, container) {
+        mammoth.convertToHtml({ arrayBuffer: blob.arrayBuffer() })
+            .then(result => {
+                container.querySelector('.content-loader').remove();
+                container.innerHTML += `<div class="html-content">${result.value}</div>`;
+            })
+            .catch(error => {
+                console.error('Error rendering Word document:', error);
+                container.innerHTML += '<p class="text-danger">Error rendering Word document. Please try again.</p>';
+            });
+    }
+
+    function renderImage(blob, container) {
+        const url = URL.createObjectURL(blob);
+        const img = document.createElement('img');
+        img.src = url;
+        img.alt = "Document Image";
+        img.onload = function() {
+            container.querySelector('.content-loader').remove();
+            URL.revokeObjectURL(url);
+        };
+        container.appendChild(img);
+    }
+});
+    </script>
 @endpush
