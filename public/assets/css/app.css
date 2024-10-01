@@ -1,3 +1,25 @@
+/* For WebKit Browsers (Chrome, Safari) */
+::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+    height: 12px; /* Height of the scrollbar */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #28a745; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Rounded corners */
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+    border-radius: 6px; /* Rounded corners */
+}
+
+/* For Firefox */
+.scrollable {
+    scrollbar-width: thin; /* Makes the scrollbar thin */
+    scrollbar-color: #28a745 #f1f1f1; /* thumb color, track color */
+}
+
 .carousel-item {
     width: 100% !important;
     /* height: 500px  !important; */
