@@ -21,7 +21,7 @@
                 <div class="course-meta mb-5">
                     <div class="card shadow-lg border-0 rounded-lg">
                         <div class="card-body">
-                            <h3 class="card-title text-primary mb-4">What You'll Learn</h3>
+                            <h3 class="card-title text-success mb-4">What You'll Learn</h3>
                             <div class="row">
                                 @foreach(['Master Python 2 and 3 professionally',
                                           'Create exciting games like Tic Tac Toe and Blackjack',
