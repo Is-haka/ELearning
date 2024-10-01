@@ -46,7 +46,7 @@
                     <h3 class="fw-bold mb-3">Course Overview</h3>
                     <p class="lead">{{ $courses->description }}</p>
                     <div class="mt-4">
-                        <button class="btn btn-outline-primary me-2 mb-2" data-bs-toggle="modal" data-bs-target="#courseDemo">
+                        <button class="btn btn-outline-success me-2 mb-2" data-bs-toggle="modal" data-bs-target="#courseDemo">
                             <i class="fas fa-play-circle me-2"></i>Watch Course Demo
                         </button>
                         <button class="btn btn-outline-secondary mb-2" data-bs-toggle="modal" data-bs-target="#syllabusModal">
@@ -61,12 +61,12 @@
                     <div class="card shadow-sm border-0">
                         <div class="card-body">
                             <div class="d-flex align-items-center">
-                                <img src="{{ asset('uploads/files/3.jpg') }}" class="rounded-circle me-4 border border-primary p-1" width="100" height="100" alt="Instructor">
+                                <img src="{{ asset('uploads/files/3.jpg') }}" class="rounded-circle me-4 border border-success p-1" width="100" height="100" alt="Instructor">
                                 <div>
                                     <h4 class="mb-1">{{ $courses->instructor->name }}</h4>
                                     <p class="text-muted mb-2">{{ $courses->instructor->title }}</p>
                                     <p>{{ $courses->instructor->instructor_description }}</p>
-                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#instructorBio">
+                                    <button class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#instructorBio">
                                         <i class="fas fa-user me-2"></i>Full Bio
                                     </button>
                                 </div>
@@ -86,7 +86,7 @@
                                 <div class="col-md-8">
                                     <h3 class="fw-bold mb-3">Hands-on Coding Exercises</h3>
                                     <p class="lead">Practice your skills with our updated, interactive coding exercises. Apply what you learn in real-time!</p>
-                                    <button class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#exerciseDemo">
+                                    <button class="btn btn-success mt-2" data-bs-toggle="modal" data-bs-target="#exerciseDemo">
                                         <i class="fas fa-laptop-code me-2"></i>Try a Sample Exercise
                                     </button>
                                 </div>
@@ -117,7 +117,7 @@
                                         @foreach($firstLesson->lessonTypes as $type)
                                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                                 <span><i class="fas fa-file-alt me-2 text-primary"></i>{{ $firstLesson->title }}</span>
-                                                <a href="{{ asset('uploads/' . $type->reading) }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                                <a href="{{ asset('uploads/' . $type->reading) }}" target="_blank" class="btn btn-sm btn-outline-success">
                                                     <i class="fas fa-eye me-1"></i>Preview
                                                 </a>
                                             </li>
@@ -148,7 +148,7 @@
                                             <li class="list-group-item d-flex justify-content-between align-items-center">
                                                 <span><i class="fas fa-file-alt me-2 text-primary"></i>{{ $lesson->title }}</span>
                                                 @if($enrolled && $enrolled->status === 'enrolled')
-                                                    <a href="{{ asset('uploads/'. $type->reading) }}" target="_blank" class="btn btn-sm btn-outline-primary">
+                                                    <a href="{{ asset('uploads/'. $type->reading) }}" target="_blank" class="btn btn-sm btn-outline-success">
                                                         <i class="fas fa-eye me-1"></i>View
                                                     </a>
                                                 @else
@@ -190,7 +190,7 @@
                                         <button type="submit" class="btn btn-secondary w-100"><i class="fas fa-user-plus me-2"></i>Enroll Now</button>
                                     </form>
                                 @else
-                                    <button class="btn btn-outline-primary w-100" data-bs-toggle="modal" data-bs-target="#loginModal">
+                                    <button class="btn btn-outline-success w-100" data-bs-toggle="modal" data-bs-target="#loginModal">
                                         <i class="fas fa-user me-2"></i>Login to Enroll
                                     </button>
                                 @endif
@@ -215,7 +215,7 @@
 
                                 @if (!$enrolled)
                                     @if ($inCart)
-                                        <a href="{{ route('cart') }}" class="btn btn-primary btn-sm w-100 mb-3">
+                                        <a href="{{ route('cart') }}" class="btn btn-outline-success btn-sm w-100 mb-3">
                                             <i class="fas fa-shopping-cart me-2"></i>Go to Cart
                                         </a>
                                     @else
@@ -236,7 +236,7 @@
                                 <a href="{{ route('cart.add', ['course_id' => $courses->id]) }}" class="btn btn-success btn-sm w-100 mb-3">
                                     <i class="fas fa-cart-plus me-2"></i>Add to Cart
                                 </a>
-                                <a href="{{ route('course.enroll.link', ['course_id' => $courses->id]) }}" class="btn btn-outline-primary btn-sm w-100">Enroll Now</a>
+                                <a href="{{ route('course.enroll.link', ['course_id' => $courses->id]) }}" class="btn btn-outline-success btn-sm w-100">Enroll Now</a>
                             @endauth
 
                             <p class="text-muted mt-3">

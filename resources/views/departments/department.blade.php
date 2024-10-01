@@ -29,28 +29,30 @@
                     <p class="text-muted">Our {{ $category->description }} courses are designed to take you from beginner to expert. Whether you're looking to start a new career or enhance your current skills, we have the perfect course for you.</p>
                 </div>
                 @foreach ($coursesInCategory as $course)
-                    <div class="col-md-6 col-lg-4 col-xl-3">
-                        <div class="card h-100 border-0 course-card">
-                            <a href="{{ route('course', ['id' => $course->id]) }}">
-                                <div class="card-img-top-wrapper">
-                                    <img src="{{ asset('uploads/' . $course->thumbnail) }}" class="card-img-top" alt="{{ $course->name }} course">
-                                    <div class="card-img-overlay d-flex align-items-start justify-content-end">
-                                        <span class="badge bg-success">{{ $category->name }}</span>
-                                    </div>
+                <div class="col-md-6 col-lg-4 col-xl-3">
+                    <div class="card h-100 border-0 course-card">
+                        <a href="{{ route('course', ['id' => $course->id]) }}">
+                            <div class="card-img-top-wrapper">
+                                <img src="{{ asset('uploads/' . $course->thumbnail) }}" class="card-img-top" alt="{{ $course->name }} course">
+                                <div class="card-img-overlay d-flex align-items-start justify-content-end">
+                                    <span class="badge bg-success"><i class="fas fa-tag"></i> {{ $category->name }}</span>
                                 </div>
+                            </div>
+                        </a>
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-book"></i> {{ $course->name }}</h5>
+                            <p class="card-text text-muted"><i class="fas fa-chalkboard-teacher"></i> {{ $course->instructor->user->name }}</p>
+                            <p class="card-text"><i class="fas fa-clock"></i> {{ $course->duration }}</p>
+                            <p class="card-text"><i class="fas fa-calendar-alt"></i> {{ \Carbon\Carbon::parse($course->starting_date)->format('F j, Y') }}</p>
+                        </div>
+                        <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
+                            <span class="fw-bold text-success"><i class="fas fa-tags"></i> TZS {{ number_format($course->price, 2) }}/-</span>
+                            <a href="{{ route('course', ['id' => $course->id]) }}" class="btn btn-outline-success btn-sm">
+                                <i class="fas fa-info-circle"></i> Course details
                             </a>
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $course->name }}</h5>
-                                <p class="card-text text-muted">{{ $course->instructor->user->name }}</p>
-                            </div>
-                            <div class="card-footer bg-white border-top-0 d-flex justify-content-between align-items-center">
-                                <span class="fw-bold text-success">TZS {{ number_format($course->price,2) }}/-</span>
-                                <a href="{{ route('course', ['id' => $course->id]) }}" class="btn btn-outline-success btn-sm">
-                                    <i class="fas fa-clipboard fa-sm fa-fw"></i> Course details
-                                </a>
-                            </div>
                         </div>
                     </div>
+                </div>
                 @endforeach
             @endif
         @endforeach
