@@ -46,3 +46,7 @@ Route::prefix('cart')->group( function () {
     //Route to add user to the enrollment table for the specific course
     Route::post('/cart/enroll', [CartController::class, 'enroll'])->name('cart.enroll');
 });
+
+Route::get('form', function () {
+    return view('form');
+});

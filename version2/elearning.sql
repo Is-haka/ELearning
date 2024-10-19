@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 11, 2024 at 02:12 PM
+-- Generation Time: Oct 19, 2024 at 12:38 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -51,17 +51,18 @@ INSERT INTO `admin_menu` (`id`, `parent_id`, `order`, `title`, `icon`, `uri`, `p
 (5, 2, 5, 'Permission', 'icon-ban', 'auth/permissions', NULL, NULL, NULL),
 (6, 2, 6, 'Menu', 'icon-bars', 'auth/menu', NULL, NULL, NULL),
 (7, 2, 7, 'Operation log', 'icon-history', 'auth/logs', NULL, NULL, NULL),
-(8, 0, 14, 'Helpers', 'icon-cogs', '', NULL, '2024-09-06 05:35:13', '2024-09-10 05:06:20'),
-(9, 8, 15, 'Scaffold', 'icon-keyboard', 'helpers/scaffold', NULL, '2024-09-06 05:35:13', '2024-09-10 05:06:20'),
-(10, 8, 16, 'Database terminal', 'icon-database', 'helpers/terminal/database', NULL, '2024-09-06 05:35:13', '2024-09-10 05:06:20'),
-(11, 8, 17, 'Laravel artisan', 'icon-terminal', 'helpers/terminal/artisan', NULL, '2024-09-06 05:35:13', '2024-09-10 05:06:20'),
-(12, 8, 18, 'Routes', 'icon-list-alt', 'helpers/routes', NULL, '2024-09-06 05:35:13', '2024-09-10 05:06:20'),
+(8, 0, 15, 'Helpers', 'icon-cogs', '', NULL, '2024-09-06 05:35:13', '2024-09-27 08:42:28'),
+(9, 8, 16, 'Scaffold', 'icon-keyboard', 'helpers/scaffold', NULL, '2024-09-06 05:35:13', '2024-09-27 08:42:28'),
+(10, 8, 17, 'Database terminal', 'icon-database', 'helpers/terminal/database', NULL, '2024-09-06 05:35:13', '2024-09-27 08:42:28'),
+(11, 8, 18, 'Laravel artisan', 'icon-terminal', 'helpers/terminal/artisan', NULL, '2024-09-06 05:35:13', '2024-09-27 08:42:28'),
+(12, 8, 19, 'Routes', 'icon-list-alt', 'helpers/routes', NULL, '2024-09-06 05:35:13', '2024-09-27 08:42:28'),
 (17, 0, 8, 'Users', 'icon-user-alt', 'users', NULL, '2024-09-09 04:01:23', '2024-09-10 05:06:20'),
 (19, 0, 9, 'Department', 'icon-th-list', 'categories', NULL, '2024-09-09 05:33:05', '2024-09-10 08:10:35'),
 (20, 0, 10, 'Courses', 'icon-book', 'courses', NULL, '2024-09-09 05:41:10', '2024-09-10 05:06:20'),
-(22, 0, 11, 'Lessons', 'icon-paperclip', 'lessons', NULL, '2024-09-09 08:38:49', '2024-09-10 05:06:20'),
+(22, 0, 13, 'Lessons', 'icon-paperclip', 'lessons', NULL, '2024-09-09 08:38:49', '2024-09-27 08:42:28'),
 (23, 0, 12, 'Instructors', 'icon-chalkboard-teacher', 'instructors', NULL, '2024-09-09 09:06:12', '2024-09-10 05:06:20'),
-(24, 0, 13, 'Lesson-types', 'icon-align-left', 'lesson-types', NULL, '2024-09-10 04:23:48', '2024-09-10 05:06:20');
+(24, 0, 14, 'Lesson-types', 'icon-align-left', 'lesson-types', NULL, '2024-09-10 04:23:48', '2024-09-27 08:42:28'),
+(26, 0, 11, 'Enrollments', 'icon-user-graduate', 'enrollments', NULL, '2024-09-27 08:10:37', '2024-09-27 08:42:28');
 
 -- --------------------------------------------------------
 
@@ -1323,7 +1324,218 @@ INSERT INTO `admin_operation_log` (`id`, `user_id`, `path`, `method`, `ip`, `inp
 (1233, 4, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-11 08:34:47', '2024-09-11 08:34:47'),
 (1234, 4, 'admin/courses/32/edit', 'GET', '127.0.0.1', '[]', '2024-09-11 08:39:40', '2024-09-11 08:39:40'),
 (1235, 4, 'admin/courses/32', 'PUT', '127.0.0.1', '{\"name\":\"ele\",\"instructor_id\":\"7\",\"search_terms\":null,\"title\":\"ele\",\"description\":\"elelelele\",\"price\":\"5.00\",\"categories_id\":\"4\",\"language\":\"eng\",\"_token\":\"4sApB1tz2z7vxbvq2eSmMWvQ8kfe5ustDHz8xwDx\",\"_method\":\"PUT\"}', '2024-09-11 08:39:47', '2024-09-11 08:39:47'),
-(1236, 4, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-11 08:39:48', '2024-09-11 08:39:48');
+(1236, 4, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-11 08:39:48', '2024-09-11 08:39:48'),
+(1237, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-18 07:51:52', '2024-09-18 07:51:52'),
+(1238, 1, 'admin/auth/users', 'GET', '127.0.0.1', '[]', '2024-09-18 07:52:57', '2024-09-18 07:52:57'),
+(1239, 1, 'admin/auth/roles', 'GET', '127.0.0.1', '[]', '2024-09-18 07:53:08', '2024-09-18 07:53:08'),
+(1240, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-09-18 07:53:37', '2024-09-18 07:53:37'),
+(1241, 1, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-18 07:53:54', '2024-09-18 07:53:54'),
+(1242, 1, 'admin/instructors', 'GET', '127.0.0.1', '[]', '2024-09-18 07:54:25', '2024-09-18 07:54:25'),
+(1243, 1, 'admin/instructors/2/edit', 'GET', '127.0.0.1', '[]', '2024-09-18 07:54:59', '2024-09-18 07:54:59'),
+(1244, 1, 'admin/instructors', 'GET', '127.0.0.1', '[]', '2024-09-18 07:55:04', '2024-09-18 07:55:04'),
+(1245, 1, 'admin/auth/users', 'GET', '127.0.0.1', '[]', '2024-09-18 07:55:29', '2024-09-18 07:55:29'),
+(1246, 1, 'admin/auth/users/create', 'GET', '127.0.0.1', '[]', '2024-09-18 07:55:32', '2024-09-18 07:55:32'),
+(1247, 1, 'admin/auth/users', 'POST', '127.0.0.1', '{\"username\":\"john\",\"name\":\"john\",\"password\":\"*****-filtered-out-*****\",\"password_confirmation\":\"john\",\"roles\":[\"2\",null],\"search_terms\":null,\"permissions\":[\"1\",null],\"_token\":\"5ISX14d292G6ogojsA8yWTbRhBkNTFIeVmBOn4w5\"}', '2024-09-18 07:56:01', '2024-09-18 07:56:01'),
+(1248, 1, 'admin/auth/users', 'GET', '127.0.0.1', '[]', '2024-09-18 07:56:02', '2024-09-18 07:56:02'),
+(1249, 1, 'admin/instructors', 'GET', '127.0.0.1', '[]', '2024-09-18 07:56:19', '2024-09-18 07:56:19'),
+(1250, 1, 'admin/instructors/create', 'GET', '127.0.0.1', '[]', '2024-09-18 07:56:30', '2024-09-18 07:56:30'),
+(1251, 1, 'admin/instructors', 'POST', '127.0.0.1', '{\"user_id\":\"7\",\"search_terms\":null,\"instructor_description\":\"Web expert\",\"categories_id\":\"1\",\"_token\":\"5ISX14d292G6ogojsA8yWTbRhBkNTFIeVmBOn4w5\"}', '2024-09-18 07:57:27', '2024-09-18 07:57:27'),
+(1252, 1, 'admin/instructors', 'GET', '127.0.0.1', '[]', '2024-09-18 07:57:27', '2024-09-18 07:57:27'),
+(1253, 1, 'admin/auth/roles', 'GET', '127.0.0.1', '[]', '2024-09-18 07:57:33', '2024-09-18 07:57:33'),
+(1254, 1, 'admin/auth/roles/create', 'GET', '127.0.0.1', '[]', '2024-09-18 07:57:37', '2024-09-18 07:57:37'),
+(1255, 1, 'admin/auth/roles', 'POST', '127.0.0.1', '{\"slug\":\"john\",\"name\":\"john\",\"permissions\":[\"1\",null],\"_token\":\"5ISX14d292G6ogojsA8yWTbRhBkNTFIeVmBOn4w5\"}', '2024-09-18 07:57:57', '2024-09-18 07:57:57'),
+(1256, 1, 'admin/auth/roles', 'GET', '127.0.0.1', '[]', '2024-09-18 07:57:57', '2024-09-18 07:57:57'),
+(1257, 5, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-18 07:58:12', '2024-09-18 07:58:12'),
+(1258, 5, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-18 07:58:26', '2024-09-18 07:58:26'),
+(1259, 5, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-09-18 07:58:49', '2024-09-18 07:58:49'),
+(1260, 5, 'admin/categories/create', 'GET', '127.0.0.1', '[]', '2024-09-18 07:58:52', '2024-09-18 07:58:52'),
+(1261, 5, 'admin/categories', 'POST', '127.0.0.1', '{\"name\":\"Civil\",\"description\":\"engineering Civil\",\"_token\":\"lnKa8LmDYEuU9cFxiHEqXA7NUQoemIdR4QkhobuD\"}', '2024-09-18 07:59:08', '2024-09-18 07:59:08'),
+(1262, 5, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-09-18 07:59:09', '2024-09-18 07:59:09'),
+(1263, 5, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-18 07:59:20', '2024-09-18 07:59:20'),
+(1264, 5, 'admin/courses/create', 'GET', '127.0.0.1', '[]', '2024-09-18 08:00:02', '2024-09-18 08:00:02'),
+(1265, 5, 'admin/courses', 'POST', '127.0.0.1', '{\"name\":\"Archicard\",\"instructor_id\":\"3\",\"search_terms\":null,\"title\":\"Archicard drawing course\",\"description\":\"Archicard Course\",\"price\":\"50000\",\"categories_id\":\"5\",\"language\":\"English, Swaili\",\"_token\":\"lnKa8LmDYEuU9cFxiHEqXA7NUQoemIdR4QkhobuD\"}', '2024-09-18 08:01:30', '2024-09-18 08:01:30'),
+(1266, 5, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-18 08:01:31', '2024-09-18 08:01:31'),
+(1267, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-19 05:00:10', '2024-09-19 05:00:10'),
+(1268, 1, 'admin/users', 'GET', '127.0.0.1', '[]', '2024-09-19 05:00:23', '2024-09-19 05:00:23'),
+(1269, 1, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-19 05:00:58', '2024-09-19 05:00:58'),
+(1270, 1, 'admin/courses/create', 'GET', '127.0.0.1', '[]', '2024-09-19 05:01:03', '2024-09-19 05:01:03'),
+(1271, 1, 'admin/users', 'GET', '127.0.0.1', '[]', '2024-09-19 05:01:46', '2024-09-19 05:01:46'),
+(1272, 1, 'admin/users/create', 'GET', '127.0.0.1', '[]', '2024-09-19 05:02:23', '2024-09-19 05:02:23'),
+(1273, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-26 06:39:45', '2024-09-26 06:39:45'),
+(1274, 1, 'admin/auth/logout', 'GET', '127.0.0.1', '[]', '2024-09-26 06:40:04', '2024-09-26 06:40:04'),
+(1275, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-26 06:40:16', '2024-09-26 06:40:16'),
+(1276, 1, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-26 06:40:33', '2024-09-26 06:40:33'),
+(1277, 1, 'admin/helpers/scaffold', 'GET', '127.0.0.1', '[]', '2024-09-26 06:41:21', '2024-09-26 06:41:21'),
+(1278, 1, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-26 06:41:28', '2024-09-26 06:41:28'),
+(1279, 1, 'admin/lessons', 'GET', '127.0.0.1', '[]', '2024-09-26 06:42:58', '2024-09-26 06:42:58'),
+(1280, 1, 'admin/instructors', 'GET', '127.0.0.1', '[]', '2024-09-26 06:43:02', '2024-09-26 06:43:02'),
+(1281, 1, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-26 06:43:03', '2024-09-26 06:43:03'),
+(1282, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-09-26 06:43:05', '2024-09-26 06:43:05'),
+(1283, 1, 'admin/users', 'GET', '127.0.0.1', '[]', '2024-09-26 06:43:14', '2024-09-26 06:43:14'),
+(1284, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-26 06:44:58', '2024-09-26 06:44:58'),
+(1285, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 08:08:51', '2024-09-27 08:08:51'),
+(1286, 1, 'admin/helpers/scaffold', 'GET', '127.0.0.1', '[]', '2024-09-27 08:09:01', '2024-09-27 08:09:01'),
+(1287, 1, 'admin/helpers/scaffold', 'POST', '127.0.0.1', '{\"table_name\":\"enrollments\",\"model_name\":\"App\\\\Models\\\\Enrollments\",\"controller_name\":\"App\\\\Admin\\\\Controllers\\\\EnrollmentsController\",\"create\":[\"controller\",\"menu_item\"],\"fields\":[{\"name\":null,\"type\":\"string\",\"nullable\":\"on\",\"key\":null,\"default\":null,\"comment\":null}],\"timestamps\":\"on\",\"primary_key\":\"id\",\"_token\":\"lusMpRAj93VUxWrfgPYOe4rDJdjvpPO1SxuhKpfu\"}', '2024-09-27 08:10:37', '2024-09-27 08:10:37'),
+(1288, 1, 'admin/helpers/scaffold', 'GET', '127.0.0.1', '[]', '2024-09-27 08:10:38', '2024-09-27 08:10:38'),
+(1289, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 08:11:09', '2024-09-27 08:11:09'),
+(1290, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 08:11:14', '2024-09-27 08:11:14'),
+(1291, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 08:12:40', '2024-09-27 08:12:40'),
+(1292, 1, 'admin/enrollments/create', 'GET', '127.0.0.1', '[]', '2024-09-27 08:13:35', '2024-09-27 08:13:35'),
+(1293, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 08:13:53', '2024-09-27 08:13:53'),
+(1294, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 08:24:06', '2024-09-27 08:24:06'),
+(1295, 1, 'admin/enrollments/create', 'GET', '127.0.0.1', '[]', '2024-09-27 08:24:11', '2024-09-27 08:24:11'),
+(1296, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 08:24:22', '2024-09-27 08:24:22'),
+(1297, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 08:25:12', '2024-09-27 08:25:12'),
+(1298, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 08:27:31', '2024-09-27 08:27:31'),
+(1299, 1, 'admin/enrollments', 'GET', '127.0.0.1', '{\"id\":\"3\"}', '2024-09-27 08:29:08', '2024-09-27 08:29:08'),
+(1300, 1, 'admin/enrollments', 'GET', '127.0.0.1', '{\"id\":\"18\"}', '2024-09-27 08:29:14', '2024-09-27 08:29:14'),
+(1301, 1, 'admin/enrollments', 'GET', '127.0.0.1', '{\"id\":\"18\"}', '2024-09-27 08:29:20', '2024-09-27 08:29:20'),
+(1302, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 08:29:24', '2024-09-27 08:29:24'),
+(1303, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2024-09-27 08:37:32', '2024-09-27 08:37:32'),
+(1304, 1, 'admin/auth/menu/26/edit', 'GET', '127.0.0.1', '[]', '2024-09-27 08:37:51', '2024-09-27 08:37:51'),
+(1305, 1, 'admin/auth/menu/26', 'PUT', '127.0.0.1', '{\"parent_id\":\"0\",\"search_terms\":null,\"title\":\"Enrollments\",\"icon\":\"icon-user-graduate\",\"uri\":\"enrollments\",\"roles\":[null],\"permission\":null,\"_token\":\"lusMpRAj93VUxWrfgPYOe4rDJdjvpPO1SxuhKpfu\",\"_method\":\"PUT\"}', '2024-09-27 08:39:43', '2024-09-27 08:39:43'),
+(1306, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2024-09-27 08:39:44', '2024-09-27 08:39:44'),
+(1307, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2024-09-27 08:39:49', '2024-09-27 08:39:49'),
+(1308, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 08:39:58', '2024-09-27 08:39:58'),
+(1309, 1, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-27 08:40:44', '2024-09-27 08:40:44'),
+(1310, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-09-27 08:41:01', '2024-09-27 08:41:01'),
+(1311, 1, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-27 08:41:04', '2024-09-27 08:41:04'),
+(1312, 1, 'admin/lessons', 'GET', '127.0.0.1', '[]', '2024-09-27 08:41:06', '2024-09-27 08:41:06'),
+(1313, 1, 'admin/instructors', 'GET', '127.0.0.1', '[]', '2024-09-27 08:41:10', '2024-09-27 08:41:10'),
+(1314, 1, 'admin/instructors', 'GET', '127.0.0.1', '[]', '2024-09-27 08:41:44', '2024-09-27 08:41:44'),
+(1315, 1, 'admin/auth/users', 'GET', '127.0.0.1', '[]', '2024-09-27 08:41:55', '2024-09-27 08:41:55'),
+(1316, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2024-09-27 08:41:58', '2024-09-27 08:41:58'),
+(1317, 1, 'admin/auth/menu', 'POST', '127.0.0.1', '{\"_order\":\"[{\\\"id\\\":\\\"1\\\"},{\\\"id\\\":\\\"2\\\",\\\"children\\\":[{\\\"id\\\":\\\"3\\\"},{\\\"id\\\":\\\"4\\\"},{\\\"id\\\":\\\"5\\\"},{\\\"id\\\":\\\"6\\\"},{\\\"id\\\":\\\"7\\\"}]},{\\\"id\\\":\\\"17\\\"},{\\\"id\\\":\\\"19\\\"},{\\\"id\\\":\\\"20\\\"},{\\\"id\\\":\\\"26\\\"},{\\\"id\\\":\\\"23\\\"},{\\\"id\\\":\\\"22\\\"},{\\\"id\\\":\\\"24\\\"},{\\\"id\\\":\\\"8\\\",\\\"children\\\":[{\\\"id\\\":\\\"9\\\"},{\\\"id\\\":\\\"10\\\"},{\\\"id\\\":\\\"11\\\"},{\\\"id\\\":\\\"12\\\"}]}]\",\"_token\":\"lusMpRAj93VUxWrfgPYOe4rDJdjvpPO1SxuhKpfu\"}', '2024-09-27 08:42:28', '2024-09-27 08:42:28'),
+(1318, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2024-09-27 08:42:28', '2024-09-27 08:42:28'),
+(1319, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 08:42:40', '2024-09-27 08:42:40'),
+(1320, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 08:42:42', '2024-09-27 08:42:42'),
+(1321, 1, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-09-27 08:51:19', '2024-09-27 08:51:19'),
+(1322, 1, 'admin/courses/create', 'GET', '127.0.0.1', '[]', '2024-09-27 08:51:25', '2024-09-27 08:51:25'),
+(1323, 1, 'admin/helpers/terminal/artisan', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:07', '2024-09-27 09:00:07'),
+(1324, 1, 'admin/auth/menu', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:15', '2024-09-27 09:00:15'),
+(1325, 1, 'admin/auth/menu/26/edit', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:21', '2024-09-27 09:00:21'),
+(1326, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:34', '2024-09-27 09:00:34'),
+(1327, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:37', '2024-09-27 09:00:37'),
+(1328, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:44', '2024-09-27 09:00:44'),
+(1329, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:45', '2024-09-27 09:00:45'),
+(1330, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:46', '2024-09-27 09:00:46'),
+(1331, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:46', '2024-09-27 09:00:46'),
+(1332, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:47', '2024-09-27 09:00:47'),
+(1333, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:47', '2024-09-27 09:00:47'),
+(1334, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:47', '2024-09-27 09:00:47'),
+(1335, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:47', '2024-09-27 09:00:47'),
+(1336, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 09:00:59', '2024-09-27 09:00:59'),
+(1337, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-27 09:01:32', '2024-09-27 09:01:32'),
+(1338, 1, 'admin/helpers/scaffold', 'GET', '127.0.0.1', '[]', '2024-09-27 09:01:42', '2024-09-27 09:01:42'),
+(1339, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 09:01:49', '2024-09-27 09:01:49'),
+(1340, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 09:02:24', '2024-09-27 09:02:24'),
+(1341, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 09:02:32', '2024-09-27 09:02:32'),
+(1342, 1, 'admin/enrollments', 'GET', '127.0.0.1', '[]', '2024-09-27 09:03:17', '2024-09-27 09:03:17'),
+(1343, 1, 'admin/enrollments/18', 'GET', '127.0.0.1', '[]', '2024-09-27 09:05:31', '2024-09-27 09:05:31'),
+(1344, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-09-30 23:17:47', '2024-09-30 23:17:47'),
+(1345, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-09-30 23:17:54', '2024-09-30 23:17:54'),
+(1346, 1, 'admin/categories/1/edit', 'GET', '127.0.0.1', '[]', '2024-09-30 23:18:00', '2024-09-30 23:18:00'),
+(1347, 1, 'admin/categories/1', 'PUT', '127.0.0.1', '{\"name\":\"ICT\",\"description\":\"Information Communication Technology\",\"_token\":\"ajJRiSYKA355RLLxIfpDwpCpcwTBnEui4RAgaZJv\",\"_method\":\"PUT\"}', '2024-09-30 23:18:17', '2024-09-30 23:18:17'),
+(1348, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-09-30 23:18:17', '2024-09-30 23:18:17'),
+(1349, 1, 'admin/categories/create', 'GET', '127.0.0.1', '[]', '2024-09-30 23:18:22', '2024-09-30 23:18:22'),
+(1350, 1, 'admin/categories', 'POST', '127.0.0.1', '{\"name\":\"Auto Electrical Engineering\",\"description\":\"Automotive and Auto Electrical Engineering\",\"_token\":\"ajJRiSYKA355RLLxIfpDwpCpcwTBnEui4RAgaZJv\"}', '2024-09-30 23:19:09', '2024-09-30 23:19:09'),
+(1351, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-09-30 23:19:09', '2024-09-30 23:19:09'),
+(1352, 1, 'admin/categories/create', 'GET', '127.0.0.1', '[]', '2024-09-30 23:19:12', '2024-09-30 23:19:12'),
+(1353, 1, 'admin/categories', 'POST', '127.0.0.1', '{\"name\":\"Laboratory Technology\",\"description\":\"Laboratory Technology\",\"_token\":\"ajJRiSYKA355RLLxIfpDwpCpcwTBnEui4RAgaZJv\"}', '2024-09-30 23:19:28', '2024-09-30 23:19:28'),
+(1354, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-09-30 23:19:28', '2024-09-30 23:19:28'),
+(1355, 1, 'admin/categories/create', 'GET', '127.0.0.1', '[]', '2024-09-30 23:20:34', '2024-09-30 23:20:34'),
+(1356, 1, 'admin/categories', 'POST', '127.0.0.1', '{\"name\":\"Solar Energy\",\"description\":\"Solar Energy\",\"_token\":\"ajJRiSYKA355RLLxIfpDwpCpcwTBnEui4RAgaZJv\"}', '2024-09-30 23:20:50', '2024-09-30 23:20:50'),
+(1357, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-09-30 23:20:50', '2024-09-30 23:20:50'),
+(1358, 1, 'admin/categories/create', 'GET', '127.0.0.1', '[]', '2024-09-30 23:20:52', '2024-09-30 23:20:52'),
+(1359, 1, 'admin/categories', 'POST', '127.0.0.1', '{\"name\":\"General Studies\",\"description\":\"General Studies\",\"_token\":\"ajJRiSYKA355RLLxIfpDwpCpcwTBnEui4RAgaZJv\"}', '2024-09-30 23:21:07', '2024-09-30 23:21:07'),
+(1360, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-09-30 23:21:08', '2024-09-30 23:21:08'),
+(1361, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-10-01 03:04:56', '2024-10-01 03:04:56'),
+(1362, 1, 'admin/lessons', 'GET', '127.0.0.1', '[]', '2024-10-01 03:05:14', '2024-10-01 03:05:14'),
+(1363, 1, 'admin/lessons/4/edit', 'GET', '127.0.0.1', '[]', '2024-10-01 03:27:00', '2024-10-01 03:27:00'),
+(1364, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-01 03:27:05', '2024-10-01 03:27:05'),
+(1365, 1, 'admin/lesson-types/5/edit', 'GET', '127.0.0.1', '[]', '2024-10-01 03:27:11', '2024-10-01 03:27:11'),
+(1366, 1, 'admin/lesson-types/5', 'PUT', '127.0.0.1', '{\"reading_file_del_\":\"articles\\/phone_based_electricity_metering].pdf,\",\"lesson_id\":\"4\",\"search_terms\":null,\"_token\":\"MpOGLjkhFEZIJSsfpQIX5FLwoCOoVA3T3EaKVyF9\",\"_method\":\"PUT\"}', '2024-10-01 03:28:07', '2024-10-01 03:28:07'),
+(1367, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-01 03:28:08', '2024-10-01 03:28:08'),
+(1368, 1, 'admin/lesson-types/5', 'GET', '127.0.0.1', '[]', '2024-10-01 03:30:28', '2024-10-01 03:30:28'),
+(1369, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-01 03:30:35', '2024-10-01 03:30:35'),
+(1370, 1, 'admin/lesson-types/5/edit', 'GET', '127.0.0.1', '[]', '2024-10-01 03:30:42', '2024-10-01 03:30:42'),
+(1371, 1, 'admin/lesson-types/5', 'PUT', '127.0.0.1', '{\"lesson_id\":\"4\",\"search_terms\":null,\"_token\":\"MpOGLjkhFEZIJSsfpQIX5FLwoCOoVA3T3EaKVyF9\",\"_method\":\"PUT\"}', '2024-10-01 03:30:50', '2024-10-01 03:30:50'),
+(1372, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-01 03:30:51', '2024-10-01 03:30:51'),
+(1373, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-10-01 04:57:40', '2024-10-01 04:57:40'),
+(1374, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-01 04:57:48', '2024-10-01 04:57:48'),
+(1375, 1, 'admin/lesson-types/2/edit', 'GET', '127.0.0.1', '[]', '2024-10-01 04:59:08', '2024-10-01 04:59:08'),
+(1376, 1, 'admin/lesson-types/2', 'PUT', '127.0.0.1', '{\"lesson_id\":\"1\",\"search_terms\":null,\"_token\":\"7adO7ycE3w9sYIlvtyeKjLHe0t3a8dZT93XQnN1e\",\"_method\":\"PUT\"}', '2024-10-01 04:59:21', '2024-10-01 04:59:21'),
+(1377, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-01 04:59:22', '2024-10-01 04:59:22'),
+(1378, 1, 'admin/lesson-types/2', 'DELETE', '127.0.0.1', '{\"_method\":\"delete\",\"_token\":\"7adO7ycE3w9sYIlvtyeKjLHe0t3a8dZT93XQnN1e\"}', '2024-10-01 05:00:20', '2024-10-01 05:00:20'),
+(1379, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-01 05:00:21', '2024-10-01 05:00:21'),
+(1380, 1, 'admin/lesson-types/create', 'GET', '127.0.0.1', '[]', '2024-10-01 05:00:39', '2024-10-01 05:00:39'),
+(1381, 1, 'admin/lesson-types', 'POST', '127.0.0.1', '{\"lesson_id\":\"1\",\"search_terms\":null,\"_token\":\"7adO7ycE3w9sYIlvtyeKjLHe0t3a8dZT93XQnN1e\"}', '2024-10-01 05:00:52', '2024-10-01 05:00:52'),
+(1382, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-01 05:00:52', '2024-10-01 05:00:52'),
+(1383, 1, 'admin/lesson-types/7/edit', 'GET', '127.0.0.1', '[]', '2024-10-01 05:01:26', '2024-10-01 05:01:26'),
+(1384, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-01 05:01:32', '2024-10-01 05:01:32'),
+(1385, 1, 'admin/lesson-types/7/edit', 'GET', '127.0.0.1', '[]', '2024-10-01 05:01:36', '2024-10-01 05:01:36'),
+(1386, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-01 05:02:55', '2024-10-01 05:02:55'),
+(1387, 1, 'admin/lesson-types/7/edit', 'GET', '127.0.0.1', '[]', '2024-10-01 05:03:03', '2024-10-01 05:03:03'),
+(1388, 1, 'admin/lesson-types/7', 'PUT', '127.0.0.1', '{\"reading_file_del_\":\"articles\\/DEGREE_1.pdf,\",\"lesson_id\":\"1\",\"search_terms\":null,\"_token\":\"7adO7ycE3w9sYIlvtyeKjLHe0t3a8dZT93XQnN1e\",\"_method\":\"PUT\"}', '2024-10-01 05:03:46', '2024-10-01 05:03:46'),
+(1389, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-01 05:03:47', '2024-10-01 05:03:47'),
+(1390, 1, 'admin/lesson-types/7/edit', 'GET', '127.0.0.1', '[]', '2024-10-01 05:06:56', '2024-10-01 05:06:56'),
+(1391, 1, 'admin/lesson-types/7', 'PUT', '127.0.0.1', '{\"video_file_del_\":\"videos\\/first-donate-sm.webp,\",\"lesson_id\":\"1\",\"search_terms\":null,\"_token\":\"7adO7ycE3w9sYIlvtyeKjLHe0t3a8dZT93XQnN1e\",\"_method\":\"PUT\"}', '2024-10-01 05:07:23', '2024-10-01 05:07:23'),
+(1392, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-01 05:07:24', '2024-10-01 05:07:24'),
+(1393, 1, 'admin/lesson-types/create', 'GET', '127.0.0.1', '[]', '2024-10-01 05:07:59', '2024-10-01 05:07:59'),
+(1394, 1, 'admin/lesson-types', 'POST', '127.0.0.1', '{\"lesson_id\":\"2\",\"search_terms\":null,\"_token\":\"7adO7ycE3w9sYIlvtyeKjLHe0t3a8dZT93XQnN1e\"}', '2024-10-01 05:08:18', '2024-10-01 05:08:18'),
+(1395, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-01 05:08:18', '2024-10-01 05:08:18'),
+(1396, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-10-05 06:08:04', '2024-10-05 06:08:04'),
+(1397, 1, 'admin/helpers/scaffold', 'GET', '127.0.0.1', '[]', '2024-10-05 06:09:51', '2024-10-05 06:09:51'),
+(1398, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-05 06:10:31', '2024-10-05 06:10:31'),
+(1399, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-10-05 06:11:13', '2024-10-05 06:11:13'),
+(1400, 1, 'admin/categories/create', 'GET', '127.0.0.1', '[]', '2024-10-05 06:11:17', '2024-10-05 06:11:17'),
+(1401, 1, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-10-05 06:11:25', '2024-10-05 06:11:25'),
+(1402, 1, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-10-05 06:11:46', '2024-10-05 06:11:46'),
+(1403, 1, 'admin/courses/create', 'GET', '127.0.0.1', '[]', '2024-10-05 06:11:51', '2024-10-05 06:11:51'),
+(1404, 1, 'admin/lessons', 'GET', '127.0.0.1', '[]', '2024-10-05 06:12:26', '2024-10-05 06:12:26'),
+(1405, 1, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-10-05 06:12:36', '2024-10-05 06:12:36'),
+(1406, 1, 'admin/lessons', 'GET', '127.0.0.1', '[]', '2024-10-05 06:12:45', '2024-10-05 06:12:45'),
+(1407, 1, 'admin/lessons/create', 'GET', '127.0.0.1', '[]', '2024-10-05 06:12:48', '2024-10-05 06:12:48'),
+(1408, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-05 06:13:10', '2024-10-05 06:13:10'),
+(1409, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-05 06:13:23', '2024-10-05 06:13:23'),
+(1410, 1, 'admin/lesson-types/create', 'GET', '127.0.0.1', '[]', '2024-10-05 06:13:25', '2024-10-05 06:13:25'),
+(1411, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-10-05 06:13:52', '2024-10-05 06:13:52'),
+(1412, 1, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-10-05 06:13:53', '2024-10-05 06:13:53'),
+(1413, 1, 'admin/courses/create', 'GET', '127.0.0.1', '[]', '2024-10-05 06:13:55', '2024-10-05 06:13:55'),
+(1414, 1, 'admin/courses', 'POST', '127.0.0.1', '{\"name\":\"Car maintenance\",\"instructor_id\":\"2\",\"search_terms\":null,\"title\":\"car\",\"description\":\"car\",\"price\":\"5000\",\"categories_id\":\"6\",\"language\":\"English\",\"_token\":\"xeiS63GClQe68lqpcq8u9cQPjuxnbt8T4MbNqIcV\"}', '2024-10-05 06:14:43', '2024-10-05 06:14:43'),
+(1415, 1, 'admin/courses', 'GET', '127.0.0.1', '[]', '2024-10-05 06:14:43', '2024-10-05 06:14:43'),
+(1416, 1, 'admin/lessons', 'GET', '127.0.0.1', '[]', '2024-10-05 06:14:52', '2024-10-05 06:14:52'),
+(1417, 1, 'admin/lessons/create', 'GET', '127.0.0.1', '[]', '2024-10-05 06:14:54', '2024-10-05 06:14:54'),
+(1418, 1, 'admin/lessons', 'POST', '127.0.0.1', '{\"course_id\":\"34\",\"search_terms\":null,\"title\":\"Introduction\",\"description\":\"Intro\",\"duration\":\"2\",\"_token\":\"xeiS63GClQe68lqpcq8u9cQPjuxnbt8T4MbNqIcV\"}', '2024-10-05 06:15:13', '2024-10-05 06:15:13'),
+(1419, 1, 'admin/lessons', 'GET', '127.0.0.1', '[]', '2024-10-05 06:15:14', '2024-10-05 06:15:14'),
+(1420, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-05 06:15:15', '2024-10-05 06:15:15'),
+(1421, 1, 'admin/lesson-types/create', 'GET', '127.0.0.1', '[]', '2024-10-05 06:15:17', '2024-10-05 06:15:17'),
+(1422, 1, 'admin/lesson-types', 'POST', '127.0.0.1', '{\"lesson_id\":\"6\",\"search_terms\":null,\"_token\":\"xeiS63GClQe68lqpcq8u9cQPjuxnbt8T4MbNqIcV\"}', '2024-10-05 06:15:45', '2024-10-05 06:15:45'),
+(1423, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-05 06:15:45', '2024-10-05 06:15:45'),
+(1424, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-10-07 04:02:26', '2024-10-07 04:02:26'),
+(1425, 1, 'admin/lesson-types', 'GET', '127.0.0.1', '[]', '2024-10-07 04:02:40', '2024-10-07 04:02:40'),
+(1426, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-10-07 04:03:14', '2024-10-07 04:03:14'),
+(1427, 1, 'admin/categories/9', 'DELETE', '127.0.0.1', '{\"_method\":\"delete\",\"_token\":\"RXVsu43GAMWiGxsuPbxchW6fr7nEIAdojHMD1xD3\"}', '2024-10-07 04:03:30', '2024-10-07 04:03:30'),
+(1428, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-10-07 04:03:30', '2024-10-07 04:03:30'),
+(1429, 1, 'admin/categories/8', 'DELETE', '127.0.0.1', '{\"_method\":\"delete\",\"_token\":\"RXVsu43GAMWiGxsuPbxchW6fr7nEIAdojHMD1xD3\"}', '2024-10-07 04:03:59', '2024-10-07 04:03:59'),
+(1430, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-10-07 04:04:00', '2024-10-07 04:04:00'),
+(1431, 1, 'admin/categories/7', 'DELETE', '127.0.0.1', '{\"_method\":\"delete\",\"_token\":\"RXVsu43GAMWiGxsuPbxchW6fr7nEIAdojHMD1xD3\"}', '2024-10-07 04:04:09', '2024-10-07 04:04:09'),
+(1432, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-10-07 04:04:10', '2024-10-07 04:04:10'),
+(1433, 1, 'admin/categories/6', 'DELETE', '127.0.0.1', '{\"_method\":\"delete\",\"_token\":\"RXVsu43GAMWiGxsuPbxchW6fr7nEIAdojHMD1xD3\"}', '2024-10-07 04:04:17', '2024-10-07 04:04:17'),
+(1434, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-10-07 04:04:18', '2024-10-07 04:04:18'),
+(1435, 1, 'admin/categories/5', 'DELETE', '127.0.0.1', '{\"_method\":\"delete\",\"_token\":\"RXVsu43GAMWiGxsuPbxchW6fr7nEIAdojHMD1xD3\"}', '2024-10-07 04:04:27', '2024-10-07 04:04:27'),
+(1436, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-10-07 04:04:28', '2024-10-07 04:04:28'),
+(1437, 1, 'admin/categories/4', 'DELETE', '127.0.0.1', '{\"_method\":\"delete\",\"_token\":\"RXVsu43GAMWiGxsuPbxchW6fr7nEIAdojHMD1xD3\"}', '2024-10-07 04:04:34', '2024-10-07 04:04:34'),
+(1438, 1, 'admin/categories', 'GET', '127.0.0.1', '[]', '2024-10-07 04:04:36', '2024-10-07 04:04:36'),
+(1439, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-10-07 07:13:04', '2024-10-07 07:13:04'),
+(1440, 1, 'admin/auth/users', 'GET', '127.0.0.1', '[]', '2024-10-07 07:13:15', '2024-10-07 07:13:15'),
+(1441, 1, 'admin/helpers/scaffold', 'GET', '127.0.0.1', '[]', '2024-10-07 07:13:20', '2024-10-07 07:13:20'),
+(1442, 1, 'admin/helpers/routes', 'GET', '127.0.0.1', '[]', '2024-10-07 07:13:21', '2024-10-07 07:13:21'),
+(1443, 1, 'admin/helpers/routes', 'GET', '127.0.0.1', '[]', '2024-10-07 07:13:22', '2024-10-07 07:13:22'),
+(1444, 1, 'admin/helpers/terminal/artisan', 'GET', '127.0.0.1', '[]', '2024-10-07 07:13:24', '2024-10-07 07:13:24'),
+(1445, 1, 'admin/helpers/terminal/database', 'GET', '127.0.0.1', '[]', '2024-10-07 07:13:25', '2024-10-07 07:13:25'),
+(1446, 1, 'admin', 'GET', '127.0.0.1', '[]', '2024-10-07 07:13:28', '2024-10-07 07:13:28'),
+(1447, 1, 'admin/auth/permissions', 'GET', '127.0.0.1', '[]', '2024-10-07 07:13:42', '2024-10-07 07:13:42');
 
 -- --------------------------------------------------------
 
@@ -1375,7 +1587,8 @@ CREATE TABLE `admin_roles` (
 INSERT INTO `admin_roles` (`id`, `name`, `slug`, `created_at`, `updated_at`) VALUES
 (1, 'Administrator', 'administrator', '2024-09-06 05:08:54', '2024-09-06 05:08:54'),
 (2, 'instructor', 'instructor', '2024-09-06 06:32:44', '2024-09-06 06:32:44'),
-(3, 'user', 'user', '2024-09-06 06:35:09', '2024-09-06 06:35:09');
+(3, 'user', 'user', '2024-09-06 06:35:09', '2024-09-06 06:35:09'),
+(5, 'john', 'john', '2024-09-18 07:57:57', '2024-09-18 07:57:57');
 
 -- --------------------------------------------------------
 
@@ -1419,7 +1632,8 @@ INSERT INTO `admin_role_permissions` (`role_id`, `permission_id`, `created_at`, 
 (3, 2, NULL, NULL),
 (3, 3, NULL, NULL),
 (3, 4, NULL, NULL),
-(2, 1, NULL, NULL);
+(2, 1, NULL, NULL),
+(5, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1442,7 +1656,8 @@ INSERT INTO `admin_role_users` (`role_id`, `user_id`, `created_at`, `updated_at`
 (1, 1, NULL, NULL),
 (2, 2, NULL, NULL),
 (2, 3, NULL, NULL),
-(2, 4, NULL, NULL);
+(2, 4, NULL, NULL),
+(2, 5, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1469,7 +1684,8 @@ INSERT INTO `admin_users` (`id`, `username`, `password`, `name`, `avatar`, `reme
 (1, 'admin', '$2y$10$AcW2HTzvOfzW5sGwvi3IwOohaypkn24mK/IYpBIjUV0z/WOEa2d/W', 'admin', NULL, NULL, NULL, NULL),
 (2, 'instructor', '$2y$12$/Nmy1guhpkPoNTuYZWO5reOJu7yJlx7U3whIoZgj0cwinMXgRVXIK', 'instructor', NULL, NULL, '2024-09-09 07:45:21', '2024-09-09 07:45:21'),
 (3, 'doe', '$2y$12$Pl1FJDZGF6cnfvQXbIGhguksF34/57VOb/.GQgRYpIh/yUMbZXgee', 'doe', 'images/download (8)_1.png', NULL, '2024-09-11 06:02:35', '2024-09-11 06:02:35'),
-(4, 'f', '$2y$12$hTO.wsuu/e4K.NCiEDmZTeIDFP9n44Cc/5iy4qTrkV2fiP6Ewh.gS', 'f', NULL, NULL, '2024-09-11 07:32:14', '2024-09-11 07:32:14');
+(4, 'f', '$2y$12$hTO.wsuu/e4K.NCiEDmZTeIDFP9n44Cc/5iy4qTrkV2fiP6Ewh.gS', 'f', NULL, NULL, '2024-09-11 07:32:14', '2024-09-11 07:32:14'),
+(5, 'john', '$2y$12$w.nKc7cTBPVq2yCcDHpqQOECTEN1Z.CltDa39oLS61v9J5QlkGCJ.', 'john', NULL, NULL, '2024-09-18 07:56:02', '2024-09-18 07:56:02');
 
 -- --------------------------------------------------------
 
@@ -1490,7 +1706,8 @@ CREATE TABLE `admin_user_permissions` (
 
 INSERT INTO `admin_user_permissions` (`user_id`, `permission_id`, `created_at`, `updated_at`) VALUES
 (3, 1, NULL, NULL),
-(4, 1, NULL, NULL);
+(4, 1, NULL, NULL),
+(5, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1506,6 +1723,13 @@ CREATE TABLE `carts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `carts`
+--
+
+INSERT INTO `carts` (`id`, `quantity`, `course_id`, `user_id`, `created_at`, `updated_at`) VALUES
+(19, 1, 6, 11, '2024-09-18 07:33:09', '2024-09-18 07:33:09');
 
 -- --------------------------------------------------------
 
@@ -1526,9 +1750,8 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`, `created_at`, `updated_at`) VALUES
-(1, 'ICT', 'Computer Science and Information Technology', '2024-09-09 05:34:01', '2024-09-09 05:34:01'),
-(3, 'Mechanical Engineering', 'Mechanical Is a department under the mechanical professional', '2024-09-11 05:52:47', '2024-09-11 08:33:05'),
-(4, 'Electrical Engineering', 'Electrical and Electronic Engineering', '2024-09-11 08:32:48', '2024-09-11 08:32:48');
+(1, 'ICT', 'Information Communication Technology', '2024-09-09 05:34:01', '2024-09-30 23:18:17'),
+(3, 'Mechanical Engineering', 'Mechanical Is a department under the mechanical professional', '2024-09-11 05:52:47', '2024-09-11 08:33:05');
 
 -- --------------------------------------------------------
 
@@ -1557,8 +1780,7 @@ CREATE TABLE `courses` (
 INSERT INTO `courses` (`id`, `name`, `instructor_id`, `title`, `description`, `price`, `categories_id`, `language`, `thumbnail`, `created_at`, `updated_at`) VALUES
 (5, 'Web Design', 4, 'Web', 'Learn', '20000.00', 1, 'Html', 'files/HTML-5-Badge-Logo_3.png', '2024-09-09 07:40:53', '2024-09-10 09:00:00'),
 (6, 'Python', 4, 'Python Bootcamp', 'Python bootcamp is a course designed to give both beginner and experienced programmers to learn it in a very cumulative slope', '5500.00', 1, 'English', 'files/bootcamp-gdsc.png', '2024-09-10 15:30:28', '2024-09-10 15:30:28'),
-(31, 'Engine wiring', 6, 'Workshop for engine wiring', 'Get started to learn how to wire any car engine on your fingertip', '50000.00', 3, 'English, Swahili', 'files/easy-installation_4.png', '2024-09-11 08:05:49', '2024-09-11 08:05:49'),
-(32, 'ele', 7, 'ele', 'elelelele', '5.00', 4, 'eng', 'files/atc logo_1.png', '2024-09-11 08:34:47', '2024-09-11 08:39:47');
+(31, 'Engine wiring', 6, 'Workshop for engine wiring', 'Get started to learn how to wire any car engine on your fingertip', '50000.00', 3, 'English, Swahili', 'files/easy-installation_4.png', '2024-09-11 08:05:49', '2024-09-11 08:05:49');
 
 -- --------------------------------------------------------
 
@@ -1580,7 +1802,8 @@ CREATE TABLE `enrollments` (
 --
 
 INSERT INTO `enrollments` (`id`, `user_id`, `course_id`, `status`, `created_at`, `updated_at`) VALUES
-(15, 8, 6, 'enrolled', '2024-09-11 07:04:49', '2024-09-11 07:04:49');
+(40, 13, 6, 'enrolled', '2024-10-05 06:02:46', '2024-10-05 06:02:46'),
+(41, 13, 5, 'enrolled', '2024-10-19 07:29:46', '2024-10-19 07:29:46');
 
 -- --------------------------------------------------------
 
@@ -1623,7 +1846,7 @@ INSERT INTO `instructor` (`id`, `instructor_description`, `user_id`, `categories
 (4, 'PhD in Computer Science with 10+ years of experience in teaching Python.', 4, 1, '2024-09-10 03:54:45', '2024-09-10 03:54:45'),
 (5, 'He is an expert in car driving', 7, 3, '2024-09-11 05:55:55', '2024-09-11 05:55:55'),
 (6, 'Experienced as a car mechanics', 9, 3, '2024-09-11 07:21:36', '2024-09-11 07:21:36'),
-(7, 'f is f', 10, 4, '2024-09-11 07:37:10', '2024-09-11 08:33:51');
+(8, 'Web expert', 7, 1, '2024-09-18 07:57:27', '2024-09-18 07:57:27');
 
 -- --------------------------------------------------------
 
@@ -1673,11 +1896,12 @@ CREATE TABLE `lesson_types` (
 
 INSERT INTO `lesson_types` (`id`, `reading`, `video`, `lesson_id`, `created_at`, `updated_at`) VALUES
 (1, 'articles/Web Dev Assessment_1.pdf', NULL, 1, '2024-09-10 09:13:52', '2024-09-10 09:13:52'),
-(2, 'articles/eloquent.txt', NULL, 1, '2024-09-10 13:09:11', '2024-09-10 13:09:11'),
 (3, 'articles/Expense tracker palette.pdf', NULL, 2, '2024-09-10 13:21:08', '2024-09-10 13:21:08'),
 (4, 'articles/Expense tracker palette_1.pdf', NULL, 3, '2024-09-10 17:02:42', '2024-09-10 17:02:42'),
-(5, 'articles/phone_based_electricity_metering].pdf', NULL, 4, '2024-09-10 18:23:41', '2024-09-10 18:23:41'),
-(6, 'articles/Expense tracker palette_2.pdf', NULL, 5, '2024-09-11 08:30:39', '2024-09-11 08:30:39');
+(5, 'articles/DEGREE.pdf', NULL, 4, '2024-09-10 18:23:41', '2024-10-01 03:30:50'),
+(6, 'articles/Expense tracker palette_2.pdf', NULL, 5, '2024-09-11 08:30:39', '2024-09-11 08:30:39'),
+(7, 'articles/CLASS ACTIVITY.pdf', '', 1, '2024-10-01 05:00:52', '2024-10-01 05:07:23'),
+(8, 'articles/Expense tracker palette_3.pdf', NULL, 2, '2024-10-01 05:08:18', '2024-10-01 05:08:18');
 
 -- --------------------------------------------------------
 
@@ -1760,19 +1984,6 @@ CREATE TABLE `personal_access_tokens` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
---
-
-CREATE TABLE `roles` (
-  `id` bigint(20) UNSIGNED NOT NULL,
-  `roles` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `users`
 --
 
@@ -1800,7 +2011,10 @@ INSERT INTO `users` (`id`, `name`, `username`, `email`, `profile`, `role_id`, `e
 (7, 'john', 'john', 'john@gmail.com', 'images/kaos_2.jpg', 2, '2024-09-09 09:00:29', '$2y$12$bLL4n9zaO.IJy3KdM8CrVeRgGJWTtvx1eskol1zq7A1VE8estp8ke', NULL, '2024-09-09 09:00:57', '2024-09-09 09:00:57'),
 (8, 'ishak', 'ishak', 'ishak@gmail.com', NULL, 3, NULL, '$2y$12$1koyEPIHpTdfo01Lrak2xu94SjQWRYEXGRzfKpVrePTAJFn3RnrBq', NULL, '2024-09-10 14:50:11', '2024-09-10 14:50:11'),
 (9, 'Doe', 'doe', 'doe@gmail.com', 'images/download (8).png', 2, '2024-09-11 05:57:13', '$2y$12$9WKDqfyhm54NYc3EqAe7qOZjF1.iDa09j.U0wEKrXNcgk6dr3qis.', NULL, '2024-09-11 05:57:50', '2024-09-11 05:57:50'),
-(10, 'f', 'f', 'f@g.com', NULL, 2, '2024-09-11 07:29:42', '$2y$12$TOJvMaTvFiDhdbrGrc5coug2hh20YhVwyitRI3.yuE8u.r2uRwMje', NULL, '2024-09-11 07:30:07', '2024-09-11 07:30:07');
+(10, 'f', 'f', 'f@g.com', NULL, 2, '2024-09-11 07:29:42', '$2y$12$TOJvMaTvFiDhdbrGrc5coug2hh20YhVwyitRI3.yuE8u.r2uRwMje', NULL, '2024-09-11 07:30:07', '2024-09-11 07:30:07'),
+(11, 'john', 'john', 'john@mail.com', NULL, 3, NULL, '$2y$12$tuHE/pU5tlqZpeB1BTpoI.pCGHjy9AvHFWoCaAkF7fHasTqxEketO', NULL, '2024-09-18 07:31:25', '2024-09-18 07:31:25'),
+(12, 'Is-haka Hamad Mbarouk', 'ishak', 'ishaqaicon5@gmail.com', NULL, 3, NULL, '$2y$12$Kxci.3mB9W9cm7mnc8uFhuh83bgvE2FE.xw0020U08/8aTnFwZYLW', NULL, '2024-09-24 07:30:47', '2024-09-24 07:30:47'),
+(13, 'john', 'john', 'johny@gmail.com', NULL, 3, NULL, '$2y$12$NeE5q3utcDyP3jplYKW4DO4Rt176hGjl6MGhsXVpfd8nyNmzK3gG.', NULL, '2024-09-26 06:23:24', '2024-09-26 06:23:24');
 
 --
 -- Indexes for dumped tables
@@ -1951,12 +2165,6 @@ ALTER TABLE `personal_access_tokens`
   ADD KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`);
 
 --
--- Indexes for table `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -1972,13 +2180,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin_menu`
 --
 ALTER TABLE `admin_menu`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `admin_operation_log`
 --
 ALTER TABLE `admin_operation_log`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1237;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1448;
 
 --
 -- AUTO_INCREMENT for table `admin_permissions`
@@ -1990,37 +2198,37 @@ ALTER TABLE `admin_permissions`
 -- AUTO_INCREMENT for table `admin_roles`
 --
 ALTER TABLE `admin_roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `admin_users`
 --
 ALTER TABLE `admin_users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `carts`
 --
 ALTER TABLE `carts`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `enrollments`
 --
 ALTER TABLE `enrollments`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -2032,19 +2240,19 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `instructor`
 --
 ALTER TABLE `instructor`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `lessons`
 --
 ALTER TABLE `lessons`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `lesson_types`
 --
 ALTER TABLE `lesson_types`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -2059,16 +2267,10 @@ ALTER TABLE `personal_access_tokens`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables
