@@ -32,6 +32,7 @@ Route::prefix('courses')->group( function () {
     Route::get('/course/{id}', [CourseController::class, 'course'])->name('course');
     Route::get('/course/{course_id}', [CourseController::class, 'view'])->name('course.view');
     Route::post('/course/enroll/{course_id}', [CourseController::class, 'enrollCourse'])->name('course.enroll');
+    Route::get('/course/enroll/{course_id}', [CourseController::class, 'enrollCourse'])->name('course.enroll.link');
 });
 
 //Cart routes
@@ -44,4 +45,8 @@ Route::prefix('cart')->group( function () {
     Route::delete('/cart/{id}', [CartController::class, 'removeFromCart'])->name('cart.remove');
     //Route to add user to the enrollment table for the specific course
     Route::post('/cart/enroll', [CartController::class, 'enroll'])->name('cart.enroll');
+});
+
+Route::get('form', function () {
+    return view('form');
 });

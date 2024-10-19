@@ -2,6 +2,7 @@
 
 use App\Admin\Controllers\CategoriesController;
 use App\Admin\Controllers\CoursesController;
+use App\Admin\Controllers\EnrollmentsController;
 use App\Admin\Controllers\InstructorController;
 use App\Admin\Controllers\LessonsController;
 use App\Admin\Controllers\LessonTypeController;
@@ -26,6 +27,6 @@ Route::group([
     $router->resource('courses', CoursesController::class);
     $router->resource('lessons', LessonsController::class);
     $router->resource('lesson-types', LessonTypeController::class);
-
+    $router->resource('enrollments', EnrollmentsController::class);
 
 });

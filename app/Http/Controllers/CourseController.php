@@ -8,59 +8,64 @@ use App\Models\Lessons;
 use App\Models\LessonType;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class CourseController extends Controller
 {
 
-    public function course($id)
-{
-    // Fetch the course with related data
-    $courses = Courses::with([
-        'categories:id,name',
-        'instructor.user:id,name'
-    ])->findOrFail($id);
+    public function course($id) {
+        // Fetch the course with related data
+        $courses = Courses::with([
+            'categories:id,name',
+            'instructor.user:id,name'
+        ])->findOrFail($id);
 
-    // Fetch lessons for the course
-    $lessons = Lessons::where('course_id', $id)->with('lessonTypes')->get();
+        // Fetch lessons for the course
+        $lessons = Lessons::where('course_id', $id)->with('lessonTypes')->get();
 
-    // Get the first lesson and remaining lessons
-    $firstLesson = $lessons->first();
-    $remainingLessons = $lessons->slice(1);
+        // Get the first lesson and remaining lessons
+        $firstLesson = $lessons->first();
+        $remainingLessons = $lessons->slice(1);
 
-    // Fetch lesson types
-    $lessonTypes = LessonType::whereHas('lesson', function($query) use ($id) {
-        $query->where('course_id', $id);
-    })->get();
+        // Fetch lesson types
+        $lessonTypes = LessonType::whereHas('lesson', function($query) use ($id) {
+            $query->where('course_id', $id);
+        })->get();
 
-    // Count total lessons and lesson types
-    $totalLessons = $lessons->count();
-    $totalLessonTypes = $lessonTypes->count();
+        // Count total lessons and lesson types
+        $totalLessons = $lessons->count();
+        $totalLessonTypes = $lessonTypes->count();
 
-    // Check if the user is enrolled
-    $enrolled = null;
-    if (Auth::check()) {
-        $userId = Auth::id();
-        $enrolled = Enrollments::where('user_id', $userId)->where('course_id', $id)->first();
+        // Check if the user is enrolled
+        $enrolled = null;
+        if (Auth::check()) {
+            $userId = Auth::id();
+            $enrolled = Enrollments::where('user_id', $userId)->where('course_id', $id)->first();
+        }
+        $cat = Categories::all();
+        // Pass data to the view, including enrollment status
+        return view('Courses.course', compact(
+            'courses',
+            'lessons',
+            'lessonTypes',
+            'totalLessons',
+            'totalLessonTypes',
+            'firstLesson',
+            'remainingLessons',
+            'enrolled',
+            'cat'
+        ));
     }
-    $cat = Categories::all();
-    // Pass data to the view, including enrollment status
-    return view('Courses.course', compact(
-        'courses',
-        'lessons',
-        'lessonTypes',
-        'totalLessons',
-        'totalLessonTypes',
-        'firstLesson',
-        'remainingLessons',
-        'enrolled',
-        'cat'
-    ));
-}
 
 
-    public function enrollCourse(Request $request, $course_id)
-    {
+    public function enrollCourse(Request $request, $course_id) {
         if (!Auth::check()) {
+            // Store the intended URL to session
+            $redirectUrl = route('course.enroll.link', ['course_id' => $course_id]);
+            Log::info('Storing redirect URL: ' . $redirectUrl);
+            session()->put('redirect_to', $redirectUrl);
+
+            // Redirect to login
             return redirect()->route('login');
         }
 
@@ -73,8 +78,8 @@ class CourseController extends Controller
 
         // Check if the user is already enrolled
         $enrollment = Enrollments::where('user_id', $userId)
-                                 ->where('course_id', $course_id)
-                                 ->first();
+                                ->where('course_id', $course_id)
+                                ->first();
 
         if (!$enrollment) {
             // Enroll the user
@@ -85,16 +90,19 @@ class CourseController extends Controller
             ]);
         }
 
-        // Fetch enrollment status to pass to the view
+        // Fetch enrollment status and categories to pass to the view
         $enrolled = Enrollments::where('user_id', $userId)
-        ->where('course_id', $course_id)
-        ->first();
+                            ->where('course_id', $course_id)
+                            ->first();
         $cat = Categories::all();
 
-        return redirect()->route('course.view', ['course_id' => $course_id], compact('cat'))
-                         ->with('success', 'You have been enrolled in the course.')
-                         ->with('enrolled', $enrolled);
+        // Pass data with `with()`
+        return redirect()->route('course.view', ['course_id' => $course_id])
+                        ->with('success', 'You have been enrolled in the course.')
+                        ->with('enrolled', $enrolled)
+                        ->with('cat', $cat);
     }
+
 
     public function view($course_id)
     {
